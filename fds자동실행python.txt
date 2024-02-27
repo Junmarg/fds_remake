@@ -1,0 +1,1160 @@
+fire_pos = {'01' : [3.0,4.0, 2.0,3.0, 0.0,1.0],
+            '02' : [3.0,4.0, 2.0,3.0, 3.0,4.0],
+            '03' : [3.0,4.0, 2.0,3.0, 6.0,7.0],
+            '04' : [3.0,4.0, 2.0,3.0, 9.0,10.0],
+            '05' : [3.0,4.0, 2.0,3.0, 12.0,13.0],
+            
+            '06' : [9.0,10.0, 5.5,6.5, 0.0,1.0],
+            '07' : [9.0,10.0, 5.5,6.5, 3.0,4.0],
+            '08' : [9.0,10.0, 5.5,6.5, 6.0,7.0],
+            '09' : [9.0,10.0, 5.5,6.5, 9.0,10.0],
+            '10' : [9.0,10.0, 5.5,6.5, 12.0,13.0],
+     
+            '11' : [24.0,25.0, 12.0,13.0, 0.0,1.0],
+            '12' : [24.0,25.0, 12.0,13.0, 3.0,4.0],
+            '13' : [24.0,25.0, 12.0,13.0, 6.0,7.0],
+            '14' : [24.0,25.0, 12.0,13.0, 9.0,10.0],
+            '15' : [24.0,25.0, 12.0,13.0, 12.0,13.0],
+            
+            '16' : [31.0,32.0, 15.0,16.0, 0.0,1.0],
+            '17' : [31.0,32.0, 15.0,16.0, 3.0,4.0],
+            '18' : [31.0,32.0, 15.0,16.0,, 6.0,7.0],
+            '19' : [31.0,32.0, 15.0,16.0, 9.0,10.0],
+            '20' : [31.0,32.0, 15.0,16.0, 12.0,13.0],
+            
+            '21' : [37.0,38.0, 18.0,19.0, 0.0,1.0],
+            '22' : [37.0,38.0, 18.0,19.0, 3.0,4.0],
+            '23' : [37.0,38.0, 18.0,19.0, 6.0,7.0],
+            '24' : [37.0,38.0, 18.0,19.0, 9.0,10.0],
+            '25' : [37.0,38.0, 18.0,19.0, 12.0,13.0],
+            
+            '26' : [44.0,45.0, 21.0,22.0, 0.0,1.0],
+            '27' : [44.0,45.0, 21.0,22.0, 3.0,4.0],
+            '28' : [44.0,45.0, 21.0,22.0, 6.0,7.0],
+            '29' : [44.0,45.0, 21.0,22.0, 9.0,10.0],
+            '30' : [44.0,45.0, 21.0,22.0, 12.0,13.0],
+     
+            '31' : [49.0,50.0, 23.0,24.0, 0.0,1.0],
+            '32' : [49.0,50.0, 23.0,24.0, 3.0,4.0],
+            '33' : [49.0,50.0, 23.0,24.0, 6.0,7.0],
+            '34' : [49.0,50.0, 23.0,24.0, 9.0,10.0],
+            '35' : [49.0,50.0, 23.0,24.0, 12.0,13.0],
+             
+           }
+
+import os, sys
+from datetime import datetime
+
+# 0. default path 저장
+# 1. text file 수정
+# 1. bin으로 text파일 이동
+# 2. fds run
+# 3. dev file 이름 변경 (room2-1 -> data)
+# 4. dev file을 data 폴더로 이동
+# 5. text 파일 경로로 이동
+'''
+x_s, x_e, y_s, y_e = 0.2, 0.6, 0.2, 0.6
+
+a = []
+
+for i in range(15):
+    if i >= 1 and i % 3 == 0:
+        x_s += 0.4
+        x_e += 0.4
+    for j in range(28):
+        if j % 4 == 0:
+            a.append([ '%0.1f' % x_s, '%0.1f' % x_e, '%0.1f' % (y_s + (j * 0.4 )), '%0.1f' % (y_e + ( j * 0.4 ))])
+fire_pos = a'''
+#len(fire_pos)
+for i in range(35):
+    text = 
+&HEAD CHID='Ehouse_fire', TITLE='피난경로'/
+&MESH ID='Mesh01', IJK=70, 50, 25, XB=-10.00, 60.00, -10.00, 40.00, 0.00, 25.00 /
+&TIME T_END = 90.0 /
+&DUMP NFRAMES = 90.0 /
+&MISC TMPA = 30.0/
+&REAC FUEL='PROPANE', SOOT_YIELD=0.01 / 
+
+
+&SURF ID='XWall', COLOR='GRAY' /
+&SURF ID='YWall', COLOR='GRAY' /
+&SURF ID='RxWall', COLOR='GRAY' /
+&SURF ID='RyWall', COLOR='GRAY' /
+
+&SURF ID='Elevator', COLOR='RED'/
+&SURF ID="Floor", COLOR="GREEN"/
+
+&SURF ID='Window', COLOR='MINT'/
+&SURF ID='BottomDoorWall', COLOR='GRAY' /
+&SURF ID="Stair", COLOR = "BLUE" /
+
+&VENT MB='XMIN', SURF_ID='OPEN' /
+&VENT MB='XMAX', SURF_ID='OPEN' /
+&VENT MB='YMIN', SURF_ID='OPEN' /
+&VENT MB='YMAX', SURF_ID='OPEN' /
+&VENT MB='ZMIN', SURF_ID='OPEN' /
+&VENT MB='ZMAX', SURF_ID='OPEN' /
+
+
+&DEVC XYZ=0.1, 0.1, 0.1,  ID='BackWindow',  QUANTITY='TIME',  INITIAL_STATE=.FALSE./ true가 열기 false가 닫기
+&DEVC XYZ=0.1, 0.1, 0.1,  ID='HomeDoor',  QUANTITY='TIME',  INITIAL_STATE=.TRUE./ 
+&DEVC XYZ=0.1, 0.1, 0.1,  ID='RoomDoor',  QUANTITY='TIME',  INITIAL_STATE=.TRUE./
+&DEVC XYZ=0.1, 0.1, 0.1,  ID='RoomWindow',  QUANTITY='TIME',  INITIAL_STATE=.FALSE./
+
+
+
+
+
+&OBST XB= 17.8, 24.2, 20.65, 20.75, 0, 3,  SURF_ID= 'XWall' /
+&OBST XB= 24.2, 27.2, 25.65, 25.75, 0, 3,  SURF_ID= 'XWall' /
+&OBST XB= 17.8, 25.8, 8.85, 8.95, 0, 3,  SURF_ID= 'XWall' /
+&HOLE XB= 22.3, 24.3, 8.85, 8.95, 0.1, 2.1, / 건물출입구, 
+&OBST XB= 25, 30.2, 17.65, 17.75, 0, 3,  SURF_ID= 'XWall' /
+&OBST XB= 25, 30.2, 14.35, 14.45, 0, 3,  SURF_ID= 'XWall' /
+&HOLE XB= 28.7, 29.7, 14.35, 14.45, 0.1, 2.1,  COLOR='BLACK',  DEVC_ID='HomeDoor'/ 문1
+&OBST XB= 17.8, 20.8, 17.65, 17.75, 0, 3,  SURF_ID= 'XWall' /
+&OBST XB= 17.8, 20.8, 14.65, 14.75, 0, 3,  SURF_ID= 'RxWall' /
+&HOLE XB= 19.3, 20.3, 14.65, 14.75, 0.1, 2.1,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 문2-1
+
+&OBST XB= 20.7, 20.8, 17.75, 20.55, 0.1, 2.9,  SURF_ID= 'Elevator' /엘베문
+
+&OBST XB= 17.8, 17.9, 8.85, 20.65, 0, 3,  SURF_ID= 'YWall' /
+&OBST XB= 24.2, 24.3, 20.65, 25.65, 0, 3,  SURF_ID= 'YWall' /
+&OBST XB= 27.2, 27.3, 17.65, 25.65, 0, 3,  SURF_ID= 'YWall' /
+&OBST XB= 30.2, 30.3, 14.35, 17.65, 0, 3,  SURF_ID= 'YWall' /
+&OBST XB= 25.8, 25.9, 8.85, 14.35, 0, 3,  SURF_ID= 'YWall' /
+&OBST XB= 20.7, 20.8, 8.85, 17.75, 0, 3,  SURF_ID= 'RyWall' /
+&HOLE XB= 20.7, 20.8, 9.35, 10.35, 0.1, 2.1,  COLOR='BLACK',  DEVC_ID='HomeDoor'/ 문2
+&OBST XB= 25, 25.1, 14.35, 17.65, 0, 3,  SURF_ID= 'RyWall' /
+
+
+&OBST XB= 0, 6.4, 0, 11.75, 2.9, 3.1,  SURF_ID= 'Floor'/
+&OBST XB= 6.4, 12.8, 2.95, 11.75, 2.9, 3.1,  SURF_ID= 'Floor'/
+&OBST XB= 12.8, 19.4, 5.9, 11.75, 2.9, 3.1,  SURF_ID= 'Floor'/
+&OBST XB= 17.8, 25.8, 8.85, 17.65, 2.9, 3.1,  SURF_ID= 'Floor'/
+&OBST XB= 25.8, 32.2, 11.8, 20.6, 2.9, 3.1,  SURF_ID= 'Floor'/
+&OBST XB= 30.6, 38.6, 14.75, 23.55, 2.9, 3.1,  SURF_ID= 'Floor'/
+&OBST XB= 37, 45, 17.7, 26.5, 2.9, 3.1,  SURF_ID= 'Floor'/
+&OBST XB= 45, 51.4, 20.65, 32.4, 2.9, 3.1,  SURF_ID= 'Floor'/
+
+&OBST XB= 20.8, 27.2, 17.65, 20.65, 2.9, 3.1,  SURF_ID= 'Floor'/
+
+
+&OBST XB= 25.7, 27.2, 20.65, 23.15, 0.7, 0.8,  SURF_ID= 'Stair' /
+&OBST XB= 24.2, 27.2, 23.15, 25.65, 1.5, 1.6,  SURF_ID= 'Stair' /
+&OBST XB= 24.2, 25.7, 20.65, 23.15, 2.3, 2.4,  SURF_ID= 'Stair' /
+&OBST XB= 25.7, 27.2, 20.65, 20.75, 0, 0.7,  SURF_ID= 'Stair' /
+&OBST XB= 25.7, 27.2, 23.15, 23.25, 0.8, 1.5,  SURF_ID= 'Stair' /
+&OBST XB= 24.2, 25.7, 20.65, 20.75, 2.4, 3.1,  SURF_ID= 'Stair' /
+&OBST XB= 24.2, 25.7, 23.15, 23.25, 1.6, 2.3,  SURF_ID= 'Stair' / 1층 끝
+
+
+
+
+&OBST XB= 0, 6.4, 0, 0.1, 3, 6.1,  SURF_ID= 'XWall' / 방1
+&OBST XB= 0, 1.0, 1.0, 1.1, 3, 6.1,  SURF_ID= 'XWall' /
+&HOLE XB= 2.8, 5.8, -0.1, 0.1, 3.2, 5.2,  COLOR='SKY BLUE',  DEVC_ID='RoomWindow' / 방1창문
+&OBST XB= 0, 3, 8.8, 8.9, 3, 6.1,  SURF_ID= 'RxWall'/
+&OBST XB= 0, 3, 5.85, 5.95, 3, 6.1,  SURF_ID= 'RxWall'/
+&OBST XB= 4.9, 6.4, 7.15, 7.25, 3, 6.1,  SURF_ID= 'RxWall'/
+&OBST XB= 4.9, 6.4, 10.05, 10.15, 3, 6.1,  SURF_ID= 'RxWall'/
+
+&OBST XB= 6.4, 12.8, 2.95, 3.05, 3, 6.1,  SURF_ID= 'XWall' / 방2
+&OBST XB= 6.4, 7.4, 3.95, 4.05, 3, 6.1,  SURF_ID= 'XWall' /
+&HOLE XB= 9.2, 12.2, 2.95, 3.05, 3.2, 5.2,  COLOR='SKY BLUE',  DEVC_ID='RoomWindow' / 방2창문
+&OBST XB= 6.4, 8.9, 7.75, 7.85, 3, 6.1,  SURF_ID= 'RxWall'/
+&OBST XB= 10.3, 12.8, 7.75, 7.85, 3, 6.1,  SURF_ID= 'RxWall'/
+
+&OBST XB= 12.8, 19.4, 5.9, 6, 3, 4.1,  SURF_ID= 'XWall' / 테라스
+
+&OBST XB= 19.4, 25.8, 8.85, 8.95, 3, 6.1,  SURF_ID= 'XWall' / 방3
+&HOLE XB= 22.2, 25.2, 8.85, 8.95, 3.2, 5.2,  COLOR='SKY BLUE',  DEVC_ID='RoomWindow' / 방3창문
+&OBST XB= 19.4, 21.9, 10.35, 10.45, 3, 6.1,  SURF_ID= 'RxWall'/
+&OBST XB= 19.4, 21.9, 14.35, 14.45, 3, 6.1,  SURF_ID= 'RxWall'/
+&OBST XB= 23.3, 25.8, 14.35, 14.45, 3, 6.1,  SURF_ID= 'RxWall'/
+&HOLE XB= 23.5, 24.5, 14.35, 14.45, 3.1, 5.1,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방3문
+
+&OBST XB= 25.8, 32.2, 11.8, 11.9, 3, 6.1,  SURF_ID= 'XWall' / 방4
+&HOLE XB= 28.6, 31.6, 11.8, 11.9, 3.2, 5.2,  COLOR='SKY BLUE',  DEVC_ID='RoomWindow' / 방4창문
+&OBST XB= 25.8, 29.0, 13.4, 13.5, 3, 6.1,  SURF_ID= 'RxWall'/
+&OBST XB= 25.8, 29.0, 17.4, 17.5, 3, 6.1,  SURF_ID= 'RxWall'/
+&OBST XB= 29.7, 32.2, 17.4, 17.5, 3, 6.1,  SURF_ID= 'RxWall'/
+&HOLE XB= 29.9, 30.9, 17.4, 17.5, 3.1, 5.1,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방4문
+
+&OBST XB= 32.2, 38.6, 14.75, 14.85, 3, 6.1,  SURF_ID= 'XWall' / 방5
+&HOLE XB= 35, 38, 14.75, 14.85, 3.2, 5.2,  COLOR='SKY BLUE',  DEVC_ID='RoomWindow' / 방5창문
+&OBST XB= 32.2, 34.7, 16.35, 16.45, 3, 6.1,  SURF_ID= 'RxWall'/
+&OBST XB= 32.2, 34.7, 20.35, 20.45, 3, 6.1,  SURF_ID= 'RxWall'/
+&OBST XB= 36.1, 38.6, 20.35, 20.45, 3, 6.1,  SURF_ID= 'RxWall'/
+&HOLE XB= 36.3, 37.3, 20.35, 20.45, 3.1, 5.1,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방5문
+
+&OBST XB= 38.6, 45, 17.7, 17.8, 3, 6.1,  SURF_ID= 'XWall' / 방6
+&HOLE XB= 42.4, 44.4, 17.7, 17.8, 3.2, 5.2,  COLOR='SKY BLUE',  DEVC_ID='RoomWindow' / 방6창문
+&OBST XB= 38.6, 42.0, 19.3, 19.4, 3, 6.1,  SURF_ID= 'RxWall'/
+&OBST XB= 38.6, 42.0 23.3, 23.4, 3, 6.1,  SURF_ID= 'RxWall'/
+&OBST XB= 42.5, 45, 23.3, 23.4, 3, 6.1,  SURF_ID= 'RxWall'/
+&HOLE XB= 42.7, 43.7, 23.3, 23.4, 3.1, 5.1,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방6문
+
+&OBST XB= 45, 51.4, 20.65, 20.75, 3, 6.1,  SURF_ID= 'XWall' / 방7
+&HOLE XB= 47.8, 50.8, 20.65, 20.75, 3.2, 5.2,  COLOR='SKY BLUE',  DEVC_ID='RoomWindow' / 방7창문
+&OBST XB= 45, 47.5, 24.9, 25, 3, 6.1,  SURF_ID= 'RxWall'/
+&OBST XB= 45, 47.5, 22.15, 22.25, 3, 6.1,  SURF_ID= 'RxWall'/
+&OBST XB= 48.2, 51.4, 28.4, 28.5, 3, 6.1,  SURF_ID= 'RxWall'/
+&OBST XB= 45, 47.5, 25.9, 26.0, 3, 6.1,  SURF_ID= 'RxWall'/
+&OBST XB= 45, 48.2, 30.4, 30.5, 3, 6.1,  SURF_ID= 'RxWall'/
+&HOLE XB= 46.7, 47.7, 30.4, 30.5, 3.1, 5.1,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방7문
+
+&OBST XB= 6.4, 19.4, 10.15, 10.25, 3, 6.1,  SURF_ID= 'XWall' /
+&HOLE XB= 9.1, 10.1, 10.15, 10.25, 3.1, 5.1,  COLOR='BLACK',  DEVC_ID='HomeDoor' / 방2현관
+&HOLE XB= 18, 19, 10.15, 10.25, 3.1, 5.1,  COLOR='BLACK',  DEVC_ID='HomeDoor'  / 테라스현관
+
+&OBST XB= 0, 17.8, 11.75, 11.85, 3, 6.1,  SURF_ID= 'XWall' /
+&HOLE XB= 7.4, 17.8, 11.75, 11.85, 4, 5.1,  COLOR='MINT',  DEVC_ID='BackWindow' /복도창
+&OBST XB= 19.4, 25.8, 16.05, 16.15, 3, 6.1,  SURF_ID= 'XWall' /
+&HOLE XB= 22.1, 23.1, 16.05, 16.15, 3.1, 5.1,  COLOR='BLACK',  DEVC_ID='HomeDoor'  / 방3현관
+
+&OBST XB= 25.8, 32.2, 19, 19.1, 3, 6.1,  SURF_ID= 'XWall' /
+&HOLE XB= 28.5, 29.5, 19, 19.1, 3.1, 5.1,  COLOR='BLACK',  DEVC_ID='HomeDoor'  / 방4현관
+
+&OBST XB= 32.2, 38.6, 21.95, 22.05, 3, 6.1,  SURF_ID= 'XWall' /
+&HOLE XB= 34.9, 35.9, 21.95, 22.05, 3.1, 5.1,  COLOR='BLACK',  DEVC_ID='HomeDoor'  / 방5현관
+
+&OBST XB= 38.6, 45, 24.9, 25, 3, 6.1,  SURF_ID= 'XWall' /
+&HOLE XB= 42.0, 43.0, 24.9, 25, 3.1, 5.1,  COLOR='BLACK',  DEVC_ID='HomeDoor'  / 방6현관
+
+&OBST XB= 45, 51.4, 32.4, 32.5, 3, 6.1,  SURF_ID= 'XWall' /
+&OBST XB= 17.8, 24.2, 20.65, 20.75, 3, 6.1,  SURF_ID= 'XWall' /
+&OBST XB= 17.8, 20.8, 17.65, 17.75, 3, 6.1,  SURF_ID= 'XWall' /
+&OBST XB= 24.2, 27.2, 25.65, 25.75, 3, 6.1,  SURF_ID= 'XWall' /
+&OBST XB= 27.2, 30.6, 20.6, 20.7, 3, 6.1,  SURF_ID= 'XWall' /
+&HOLE XB= 28.2, 30.6, 20.6, 20.7, 4, 5.1,  COLOR='MINT',  DEVC_ID='BackWindow' /복도창
+&OBST XB= 30.6, 37, 23.55, 23.65, 3, 6.1,  SURF_ID= 'XWall' /
+&HOLE XB= 30.6, 37, 23.55, 23.65, 4, 5.1,  COLOR='MINT',  DEVC_ID='BackWindow' /복도창
+&OBST XB= 37, 45, 26.5, 26.6, 3, 6.1,  SURF_ID= 'XWall' /
+&HOLE XB= 37, 44, 26.5, 26.6, 4, 5.1,  COLOR='MINT',  DEVC_ID='BackWindow' /복도창
+
+
+
+&OBST XB= 0, 0.1, 0, 11.75, 3, 6.1,  SURF_ID= 'YWall' / 방1
+&OBST XB= 1.0, 1.1, 0.0, 1.1, 3, 6.1,  SURF_ID= 'RyWall'/
+&HOLE XB= 1.0, 1.1, 0.0, 1.0, 3.1, 5.1,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방1문
+&OBST XB= 3, 3.1, 5.75, 11.75, 3, 6.1,  SURF_ID= 'RyWall'/
+&HOLE XB= 3, 3.1, 9, 10, 3.1, 5.1,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방1문
+&HOLE XB= 3, 3.1, 7.7, 8.7, 3.1, 5.1,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방1문
+&OBST XB= 4.9, 5, 7.15, 10.15, 3, 6.1,  SURF_ID= 'RyWall'/
+&HOLE XB= 4.9, 5, 9.05, 10.05, 3.1, 5.1,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방1문
+&HOLE XB= 6.4, 6.5, 10.35, 11.35, 3.1, 5.1,  COLOR='BLACK',  DEVC_ID='HomeDoor'  / 방1현관
+
+&OBST XB= 6.4, 6.5, 0, 11.75, 3, 6.1,  SURF_ID= 'YWall' / 방2
+&OBST XB= 7.4, 7.45, 2.95, 4.05, 3, 6.1,  SURF_ID= 'RyWall'/
+&HOLE XB= 7.4, 7.45, 3.0, 4.0, 3.1, 5.1,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방2문
+&OBST XB= 8.9, 9, 7.75, 10.15, 3, 6.1,  SURF_ID= 'RyWall'/
+&HOLE XB= 8.9, 9, 8.05, 9.05, 3.1, 5.1,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방2문
+&OBST XB= 10.3, 10.4, 7.75, 10.15, 3, 6.1,  SURF_ID= 'RyWall'/
+&HOLE XB= 10.3, 10.4, 8.05, 9.05, 3.1, 5.1,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방2문
+
+&OBST XB= 12.8, 12.9, 2.95, 10.15, 3, 6.1,  SURF_ID= 'YWall' /
+&OBST XB= 17.8, 17.9, 11.75, 20.65, 3, 6.1,  SURF_ID= 'YWall' /
+&HOLE XB= 17.8, 17.9, 11.75, 16.65, 4, 5.1,  COLOR='MINT',  DEVC_ID='BackWindow' /복도창
+
+&OBST XB= 19.4, 19.5, 5.9, 8.85, 3, 4.1,  SURF_ID= 'YWall' / 테라스
+&OBST XB= 19.4, 19.5, 8.85, 16.05, 3, 6.1,  SURF_ID= 'YWall' / 방3
+&OBST XB= 21.9, 22, 8.85, 16.05, 3, 6.1,  SURF_ID= 'RyWall'/
+&HOLE XB= 21.9, 22, 9.35, 10.35, 3.1, 5.1,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방3문
+&HOLE XB= 21.9, 22, 13.35, 14.35, 3.1, 5.1,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방3문
+&HOLE XB= 21.9, 22, 14.55, 15.55, 3.1, 5.1,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방3문
+&OBST XB= 23.3, 23.4, 14.35, 16.05, 3, 6.1,  SURF_ID= 'RyWall'/
+
+&OBST XB= 25.8, 25.9, 8.85, 19, 3, 6.1,  SURF_ID= 'YWall' / 방4
+&OBST XB= 29.0, 29.1, 11.8, 19, 3, 6.1,  SURF_ID= 'RyWall'/
+&HOLE XB= 29.0, 29.1, 12.3, 13.3, 3.1, 5.1,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방4문
+&HOLE XB= 29.0, 29.1, 16.3, 17.3, 3.1, 5.1,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방4문
+&HOLE XB= 29.0, 29.1, 17.5, 18.5, 3.1, 5.1,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방4문
+&OBST XB= 29.7, 29.8, 17.4, 19, 3, 6.1,  SURF_ID= 'RyWall'/
+
+&OBST XB= 32.2, 32.3, 11.8, 21.95, 3, 6.1,  SURF_ID= 'YWall' / 방5
+&OBST XB= 34.7, 34.8, 14.75, 21.95, 3, 6.1,  SURF_ID= 'RyWall'/
+&HOLE XB= 34.7, 34.8, 15.25, 16.25, 3.1, 5.1,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방5문
+&HOLE XB= 34.7, 34.8, 19.25, 20.25, 3.1, 5.1,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방5문
+&HOLE XB= 34.7, 34.8, 20.45, 21.45, 3.1, 5.1,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방5문
+&OBST XB= 36.1, 36.2, 20.35, 21.95, 3, 6.1,  SURF_ID= 'RyWall'/
+
+&OBST XB= 38.6, 38.7, 14.75, 24.9, 3, 6.1,  SURF_ID= 'YWall' / 방6
+&OBST XB= 42.1, 42.2, 17.7, 24.9, 3, 6.1,  SURF_ID= 'RyWall'/
+&HOLE XB= 42.1, 42.2, 18.2, 19.2, 3.1, 5.1,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방6문
+&HOLE XB= 42.1, 42.2, 22.2, 23.2, 3.1, 5.1,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방6문
+&HOLE XB= 42.1, 42.2, 23.4, 24.4, 3.1, 5.1,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방6문
+&OBST XB= 42.5, 42.6, 23.3, 24.9, 3, 6.1,  SURF_ID= 'RyWall'/
+
+&OBST XB= 24.2, 24.3, 20.65, 25.65, 3, 6.1,  SURF_ID= 'YWall' /
+&OBST XB= 27.2, 27.3, 20.6, 25.65, 3, 6.1,  SURF_ID= 'YWall' /
+&OBST XB= 30.6, 30.7, 20.6, 23.55, 3, 6.1,  SURF_ID= 'YWall' /
+&HOLE XB= 30.6, 30.7, 20.6, 23.55, 4, 5.1,  COLOR='MINT',  DEVC_ID='BackWindow' /복도창
+&OBST XB= 37, 37.1, 23.55, 26.5, 3, 6.1,  SURF_ID= 'YWall' /
+&HOLE XB= 37, 37.1, 23.55, 26.5, 4, 5.1,  COLOR='MINT',  DEVC_ID='BackWindow' /복도창
+
+&OBST XB= 45, 45.1, 17.7, 32.4, 3, 6.1,  SURF_ID= 'YWall' / 방7
+&HOLE XB= 45, 45.1, 26.2, 27.2, 3.1, 5.1,  COLOR='BLACK',  DEVC_ID='HomeDoor'  / 방7현관
+&OBST XB= 47.5, 47.6, 20.65, 25.9, 3, 6.1,  SURF_ID= 'RyWall' /
+&HOLE XB= 47.5, 47.6, 24.95, 25.85, 3.1, 5.1,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방7문
+&HOLE XB= 47.5, 47.6, 20.95, 21.95, 3.1, 5.1,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방7문
+&HOLE XB= 47.5, 47.6, 23.6, 24.6, 3.1, 5.1,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방7문
+&OBST XB= 48.1, 48.2, 28.4, 32.4, 3, 6.1,  SURF_ID= 'RyWall' /
+&HOLE XB= 48.1, 48.2, 28.9, 29.9, 3.1, 5.1,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방7문
+
+&OBST XB= 51.4, 51.5, 20.65, 32.4, 3, 6.1,  SURF_ID= 'YWall' /
+
+&OBST XB= 20.7, 20.8, 17.75, 20.55, 3.1, 6,  SURF_ID= 'Elevator' /엘베문
+
+
+
+
+&OBST XB= 25.7, 27.2, 20.65, 23.15, 3.7, 3.8,  SURF_ID= 'Stair' /
+&OBST XB= 24.2, 27.2, 23.15, 25.65, 4.5, 4.6,  SURF_ID= 'Stair' /
+&OBST XB= 24.2, 25.7, 20.65, 23.15, 5.3, 5.4,  SURF_ID= 'Stair' /
+&OBST XB= 25.7, 27.2, 20.65, 20.75, 3, 3.7,  SURF_ID= 'Stair' /
+&OBST XB= 25.7, 27.2, 23.15, 23.25, 3.8, 4.5,  SURF_ID= 'Stair' /
+&OBST XB= 24.2, 25.7, 20.65, 20.75, 5.4, 6.1,  SURF_ID= 'Stair' /
+&OBST XB= 24.2, 25.7, 23.15, 23.25, 4.6, 5.3,  SURF_ID= 'Stair' /
+
+
+
+
+&OBST XB= 0, 6.4, 0, 11.75, 6, 6.2,  SURF_ID= 'Floor'/
+&OBST XB= 6.4, 12.8, 2.95, 11.75, 6, 6.2,  SURF_ID= 'Floor'/
+&OBST XB= 12.8, 19.4, 5.9, 11.75, 6, 6.2,  SURF_ID= 'Floor'/
+&OBST XB= 17.8, 25.8, 8.85, 17.65, 6, 6.2,  SURF_ID= 'Floor'/
+&OBST XB= 25.8, 32.2, 11.8, 20.6, 6, 6.2,  SURF_ID= 'Floor'/
+&OBST XB= 30.6, 38.6, 14.75, 23.55, 6, 6.2,  SURF_ID= 'Floor'/
+&OBST XB= 37, 45, 17.7, 26.5, 6, 6.2,  SURF_ID= 'Floor'/
+&OBST XB= 45, 51.4, 20.65, 32.4, 6, 6.2,  SURF_ID= 'Floor'/
+
+&OBST XB= 20.8, 27.2, 17.65, 20.65, 6, 6.2,  SURF_ID= 'Floor'/ 2층끝
+
+
+
+&OBST XB= 0, 6.4, 0, 0.1, 6.1, 9.2,  SURF_ID= 'XWall' / 방1
+&OBST XB= 0, 1.0, 1.0, 1.1, 6.1, 9.2,  SURF_ID= 'XWall' /
+&HOLE XB= 2.8, 5.8, -0.1, 0.1, 6.3, 8.3,  COLOR='SKY BLUE',  DEVC_ID='RoomWindow' / 방1창문
+&OBST XB= 0, 3, 8.8, 8.9, 6.1, 9.2,  SURF_ID= 'RxWall'/
+&OBST XB= 0, 3, 5.85, 5.95, 6.1, 9.2,  SURF_ID= 'RxWall'/
+&OBST XB= 4.9, 6.4, 7.15, 7.25, 6.1, 9.2,  SURF_ID= 'RxWall'/
+&OBST XB= 4.9, 6.4, 10.05, 10.15, 6.1, 9.2,  SURF_ID= 'RxWall'/
+
+&OBST XB= 6.4, 12.8, 2.95, 3.05, 6.1, 9.2,  SURF_ID= 'XWall' / 방2
+&OBST XB= 6.4, 8.9, 3.95, 4.05, 6.1, 9.2,  SURF_ID= 'XWall' /
+&HOLE XB= 9.2, 12.2, 2.95, 3.05, 6.3, 8.3,  COLOR='SKY BLUE',  DEVC_ID='RoomWindow' / 방2창문
+&OBST XB= 6.4, 8.9, 7.75, 7.85, 6.1, 9.2,  SURF_ID= 'RxWall'/
+&OBST XB= 10.3, 12.8, 7.75, 7.85, 6.1, 9.2,  SURF_ID= 'RxWall'/
+
+&OBST XB= 12.8, 19.4, 5.9, 6, 6.1, 7.2,  SURF_ID= 'XWall' / 테라스
+
+&OBST XB= 19.4, 25.8, 8.85, 8.95, 6.1, 9.2,  SURF_ID= 'XWall' / 방3
+&HOLE XB= 22.2, 25.2, 8.85, 8.95, 6.3, 8.3,  COLOR='SKY BLUE',  DEVC_ID='RoomWindow' / 방3창문
+&OBST XB= 19.4, 21.9, 10.35, 10.45, 6.1, 9.2,  SURF_ID= 'RxWall'/
+&OBST XB= 19.4, 21.9, 14.35, 14.45, 6.1, 9.2,  SURF_ID= 'RxWall'/
+&OBST XB= 23.3, 25.8, 14.35, 14.45, 6.1, 9.2,  SURF_ID= 'RxWall'/
+&HOLE XB= 23.5, 24.5, 14.35, 14.45, 6.2, 8.2,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방3문
+
+&OBST XB= 25.8, 32.2, 11.8, 11.9, 6.1, 9.2,  SURF_ID= 'XWall' / 방4
+&HOLE XB= 28.6, 31.6, 11.8, 11.9, 6.3, 8.3,  COLOR='SKY BLUE',  DEVC_ID='RoomWindow' / 방4창문
+&OBST XB= 25.8, 29.0, 13.4, 13.5, 6.1, 9.2,  SURF_ID= 'RxWall'/
+&OBST XB= 25.8, 29.0, 17.4, 17.5, 6.1, 9.2,  SURF_ID= 'RxWall'/
+&OBST XB= 29.7, 32.2, 17.4, 17.5, 6.1, 9.2,  SURF_ID= 'RxWall'/
+&HOLE XB= 29.9, 30.9, 17.4, 17.5, 6.2, 8.2,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방4문
+
+&OBST XB= 32.2, 38.6, 14.75, 14.85, 6.1, 9.2,  SURF_ID= 'XWall' / 방5
+&HOLE XB= 35, 38, 14.75, 14.85, 6.3, 8.3,  COLOR='SKY BLUE',  DEVC_ID='RoomWindow' / 방5창문
+&OBST XB= 32.2, 34.7, 16.35, 16.45, 6.1, 9.2,  SURF_ID= 'RxWall'/
+&OBST XB= 32.2, 34.7, 20.35, 20.45, 6.1, 9.2,  SURF_ID= 'RxWall'/
+&OBST XB= 36.1, 38.6, 20.35, 20.45, 6.1, 9.2,  SURF_ID= 'RxWall'/
+&HOLE XB= 36.3, 37.3, 20.35, 20.45, 6.2, 8.2,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방5문
+
+&OBST XB= 38.6, 45, 17.7, 17.8, 6.1, 9.2,  SURF_ID= 'XWall' / 방6
+&HOLE XB= 42.4, 44.4, 17.7, 17.8, 6.3, 8.3,  COLOR='SKY BLUE',  DEVC_ID='RoomWindow' / 방6창문
+&OBST XB= 38.6, 42.0, 19.3, 19.4, 6.1, 9.2,  SURF_ID= 'RxWall'/
+&OBST XB= 38.6, 42.0 23.3, 23.4, 6.1, 9.2,  SURF_ID= 'RxWall'/
+&OBST XB= 42.5, 45, 23.3, 23.4, 6.1, 9.2,  SURF_ID= 'RxWall'/
+&HOLE XB= 42.7, 43.7, 23.3, 23.4, 6.2, 8.2,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방6문
+
+&OBST XB= 45, 51.4, 20.65, 20.75, 6.1, 9.2,  SURF_ID= 'XWall' / 방7
+&HOLE XB= 47.8, 50.8, 20.65, 20.75, 6.3, 8.3,  COLOR='SKY BLUE',  DEVC_ID='RoomWindow' / 방7창문
+&OBST XB= 45, 47.5, 24.9, 25, 6.1, 9.2,  SURF_ID= 'RxWall'/
+&OBST XB= 45, 47.5, 22.15, 22.25, 6.1, 9.2,  SURF_ID= 'RxWall'/
+&OBST XB= 48.2, 51.4, 28.4, 28.5, 6.1, 9.2,  SURF_ID= 'RxWall'/
+&OBST XB= 45, 47.5, 25.9, 26.0, 6.1, 9.2,  SURF_ID= 'RxWall'/
+&OBST XB= 45, 48.2, 30.4, 30.5, 6.1, 9.2,  SURF_ID= 'RxWall'/
+&HOLE XB= 46.7, 47.7, 30.4, 30.5, 6.2, 8.2,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방7문
+
+&OBST XB= 6.4, 19.4, 10.15, 10.25, 6.1, 9.2,  SURF_ID= 'XWall' /
+&HOLE XB= 9.1, 10.1, 10.15, 10.25, 6.2, 8.2,  COLOR='BLACK',  DEVC_ID='HomeDoor' / 방2현관
+&HOLE XB= 18, 19, 10.15, 10.25, 6.2, 8.2,  COLOR='BLACK',  DEVC_ID='HomeDoor'  / 테라스현관
+
+&OBST XB= 0, 17.8, 11.75, 11.85, 6.1, 9.2,  SURF_ID= 'XWall' /
+&HOLE XB= 7.4, 17.8, 11.75, 11.85, 7.1, 8.2,  COLOR='MINT',  DEVC_ID='BackWindow' /복도창
+&OBST XB= 19.4, 25.8, 16.05, 16.15, 6.1, 9.2,  SURF_ID= 'XWall' /
+&HOLE XB= 22.1, 23.1, 16.05, 16.15, 6.2, 8.2,  COLOR='BLACK',  DEVC_ID='HomeDoor'  / 방3현관
+
+&OBST XB= 25.8, 32.2, 19, 19.1, 6.1, 9.2,  SURF_ID= 'XWall' /
+&HOLE XB= 28.5, 29.5, 19, 19.1, 6.2, 8.2,  COLOR='BLACK',  DEVC_ID='HomeDoor'  / 방4현관
+
+&OBST XB= 32.2, 38.6, 21.95, 22.05, 6.1, 9.2,  SURF_ID= 'XWall' /
+&HOLE XB= 34.9, 35.9, 21.95, 22.05, 6.2, 8.2,  COLOR='BLACK',  DEVC_ID='HomeDoor'  / 방5현관
+
+&OBST XB= 38.6, 45, 24.9, 25, 6.1, 9.2,  SURF_ID= 'XWall' /
+&HOLE XB= 42.0, 43.0, 24.9, 25, 6.2, 8.2,  COLOR='BLACK',  DEVC_ID='HomeDoor'  / 방6현관
+
+&OBST XB= 45, 51.4, 32.4, 32.5, 6.1, 9.2,  SURF_ID= 'XWall' /
+&OBST XB= 17.8, 24.2, 20.65, 20.75, 6.1, 9.2,  SURF_ID= 'XWall' /
+&OBST XB= 17.8, 20.8, 17.65, 17.75, 6.1, 9.2,  SURF_ID= 'XWall' /
+&OBST XB= 24.2, 27.2, 25.65, 25.75, 6.1, 9.2,  SURF_ID= 'XWall' /
+&OBST XB= 27.2, 30.6, 20.6, 20.7, 6.1, 9.2,  SURF_ID= 'XWall' /
+&HOLE XB= 28.2, 30.6, 20.6, 20.7, 7.1, 8.2,  COLOR='MINT',  DEVC_ID='BackWindow' /복도창
+&OBST XB= 30.6, 37, 23.55, 23.65, 6.1, 9.2,  SURF_ID= 'XWall' /
+&HOLE XB= 30.6, 37, 23.55, 23.65, 7.1, 8.2,  COLOR='MINT',  DEVC_ID='BackWindow' /복도창
+&OBST XB= 37, 45, 26.5, 26.6, 6.1, 9.2,  SURF_ID= 'XWall' /
+&HOLE XB= 37, 44, 26.5, 26.6, 7.1, 8.2,  COLOR='MINT',  DEVC_ID='BackWindow' /복도창
+
+
+
+&OBST XB= 0, 0.1, 0, 11.75, 6.1, 9.2,  SURF_ID= 'YWall' / 방1
+&OBST XB= 1.0, 1.1, 0.0, 1.1, 6.1, 9.2,  SURF_ID= 'RyWall'/
+&HOLE XB= 1.0, 1.1, 0.0, 1.0, 6.2, 8.2,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방1문
+&OBST XB= 3, 3.1, 5.75, 11.75, 6.1, 9.2,  SURF_ID= 'RyWall'/
+&HOLE XB= 3, 3.1, 9, 10, 6.2, 8.2,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방1문
+&HOLE XB= 3, 3.1, 7.7, 8.7, 6.2, 8.2,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방1문
+&OBST XB= 4.9, 5, 7.15, 10.15, 6.1, 9.2,  SURF_ID= 'RyWall'/
+&HOLE XB= 4.9, 5, 9.05, 10.05, 6.2, 8.2,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방1문
+&HOLE XB= 6.4, 6.5, 10.35, 11.35, 6.2, 8.2,  COLOR='BLACK',  DEVC_ID='HomeDoor'  / 방1현관
+
+&OBST XB= 6.4, 6.5, 0, 11.75, 6.1, 9.2,  SURF_ID= 'YWall' / 방2
+&HOLE XB= 8.9, 9, 3.0, 4.0, 6.2, 8.2,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방2문
+&HOLE XB= 8.9, 9, 7.0, 8.0, 6.2, 8.2,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방2문
+&OBST XB= 8.9, 9, 2.95, 10.15, 6.1, 9.2,  SURF_ID= 'RyWall'/
+&HOLE XB= 8.9, 9, 8.05, 9.05, 6.2, 8.2,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방2문
+&OBST XB= 10.3, 10.4, 7.75, 10.15, 6.1, 9.2,  SURF_ID= 'RyWall'/
+&HOLE XB= 10.3, 10.4, 8.05, 9.05, 6.2, 8.2,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방2문
+
+&OBST XB= 12.8, 12.9, 2.95, 10.15, 6.1, 9.2,  SURF_ID= 'YWall' /
+&OBST XB= 17.8, 17.9, 11.75, 20.65, 6.1, 9.2,  SURF_ID= 'YWall' /
+&HOLE XB= 17.8, 17.9, 11.75, 16.65, 7.1, 8.2,  COLOR='MINT',  DEVC_ID='BackWindow' /복도창
+
+&OBST XB= 19.4, 19.5, 5.9, 8.85, 6.1, 7.2,  SURF_ID= 'YWall' / 테라스
+&OBST XB= 19.4, 19.5, 8.85, 16.05, 6.1, 9.2,  SURF_ID= 'YWall' / 방3
+&OBST XB= 21.9, 22, 8.85, 16.05, 6.1, 9.2,  SURF_ID= 'RyWall'/
+&HOLE XB= 21.9, 22, 9.35, 10.35, 6.2, 8.2,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방3문
+&HOLE XB= 21.9, 22, 13.35, 14.35, 6.2, 8.2,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방3문
+&HOLE XB= 21.9, 22, 14.55, 15.55, 6.2, 8.2,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방3문
+&OBST XB= 23.3, 23.4, 14.35, 16.05, 6.1, 9.2,  SURF_ID= 'RyWall'/
+
+&OBST XB= 25.8, 25.9, 8.85, 19, 6.1, 9.2,  SURF_ID= 'YWall' / 방4
+&OBST XB= 29.0, 29.1, 11.8, 19, 6.1, 9.2,  SURF_ID= 'RyWall'/
+&HOLE XB= 29.0, 29.1, 12.3, 13.3, 6.2, 8.2,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방4문
+&HOLE XB= 29.0, 29.1, 16.3, 17.3, 6.2, 8.2,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방4문
+&HOLE XB= 29.0, 29.1, 17.5, 18.5, 6.2, 8.2,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방4문
+&OBST XB= 29.7, 29.8, 17.4, 19, 6.1, 9.2,  SURF_ID= 'RyWall'/
+
+&OBST XB= 32.2, 32.3, 11.8, 21.95, 6.1, 9.2,  SURF_ID= 'YWall' / 방5
+&OBST XB= 34.7, 34.8, 14.75, 21.95, 6.1, 9.2,  SURF_ID= 'RyWall'/
+&HOLE XB= 34.7, 34.8, 15.25, 16.25, 6.2, 8.2,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방5문
+&HOLE XB= 34.7, 34.8, 19.25, 20.25, 6.2, 8.2,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방5문
+&HOLE XB= 34.7, 34.8, 20.45, 21.45, 6.2, 8.2,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방5문
+&OBST XB= 36.1, 36.2, 20.35, 21.95, 6.1, 9.2,  SURF_ID= 'RyWall'/
+
+&OBST XB= 38.6, 38.7, 14.75, 24.9, 6.1, 9.2,  SURF_ID= 'YWall' / 방6
+&OBST XB= 42.1, 42.2, 17.7, 24.9, 6.1, 9.2,  SURF_ID= 'RyWall'/
+&HOLE XB= 42.1, 42.2, 18.2, 19.2, 6.2, 8.2,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방6문
+&HOLE XB= 42.1, 42.2, 22.2, 23.2, 6.2, 8.2,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방6문
+&HOLE XB= 42.1, 42.2, 23.4, 24.4, 6.2, 8.2,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방6문
+&OBST XB= 42.5, 42.6, 23.3, 24.9, 6.1, 9.2,  SURF_ID= 'RyWall'/
+
+&OBST XB= 24.2, 24.3, 20.65, 25.65, 6.1, 9.2,  SURF_ID= 'YWall' /
+&OBST XB= 27.2, 27.3, 20.6, 25.65, 6.1, 9.2,  SURF_ID= 'YWall' /
+&OBST XB= 30.6, 30.7, 20.6, 23.55, 6.1, 9.2,  SURF_ID= 'YWall' /
+&HOLE XB= 30.6, 30.7, 20.6, 23.55, 7.1, 8.2,  COLOR='MINT',  DEVC_ID='BackWindow' /복도창
+&OBST XB= 37, 37.1, 23.55, 26.5, 6.1, 9.2,  SURF_ID= 'YWall' /
+&HOLE XB= 37, 37.1, 23.55, 26.5, 7.1, 8.2,  COLOR='MINT',  DEVC_ID='BackWindow' /복도창
+
+&OBST XB= 45, 45.1, 17.7, 32.4, 6.1, 9.2,  SURF_ID= 'YWall' / 방7
+&HOLE XB= 45, 45.1, 26.2, 27.2, 6.2, 8.2,  COLOR='BLACK',  DEVC_ID='HomeDoor'  / 방7현관
+&OBST XB= 47.5, 47.6, 20.65, 25.9, 6.1, 9.2,  SURF_ID= 'RyWall' /
+&HOLE XB= 47.5, 47.6, 24.95, 25.85, 6.2, 8.2,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방7문
+&HOLE XB= 47.5, 47.6, 20.95, 21.95, 6.2, 8.2,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방7문
+&HOLE XB= 47.5, 47.6, 23.6, 24.6, 6.2, 8.2,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방7문
+&OBST XB= 48.1, 48.2, 28.4, 32.4, 6.1, 9.2,  SURF_ID= 'RyWall' /
+&HOLE XB= 48.1, 48.2, 28.9, 29.9, 6.2, 8.2,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방7문
+
+&OBST XB= 51.4, 51.5, 20.65, 32.4, 6.1, 9.2,  SURF_ID= 'YWall' /
+
+&OBST XB= 20.7, 20.8, 17.75, 20.55, 6.2, 9.1,  SURF_ID= 'Elevator' /엘베문
+
+
+&OBST XB= 25.7, 27.2, 20.65, 23.15, 6.8, 6.9,  SURF_ID= 'Stair' /
+&OBST XB= 24.2, 27.2, 23.15, 25.65, 7.6, 7.7,  SURF_ID= 'Stair' /
+&OBST XB= 24.2, 25.7, 20.65, 23.15, 8.4, 8.5,  SURF_ID= 'Stair' /
+&OBST XB= 25.7, 27.2, 20.65, 20.75, 6.1, 6.8,  SURF_ID= 'Stair' /
+&OBST XB= 25.7, 27.2, 23.15, 23.25, 6.9, 7.6,  SURF_ID= 'Stair' /
+&OBST XB= 24.2, 25.7, 20.65, 20.75, 8.5, 9.2,  SURF_ID= 'Stair' /
+&OBST XB= 24.2, 25.7, 23.15, 23.25, 7.7, 8.4,  SURF_ID= 'Stair' /
+
+&OBST XB= 0, 6.4, 0, 11.75, 9.1, 9.3,  SURF_ID= 'Floor'/
+&OBST XB= 6.4, 12.8, 2.95, 11.75, 9.1, 9.3,  SURF_ID= 'Floor'/
+&OBST XB= 12.8, 19.4, 5.9, 11.75, 9.1, 9.3,  SURF_ID= 'Floor'/
+&OBST XB= 17.8, 25.8, 8.85, 17.65, 9.1, 9.3,  SURF_ID= 'Floor'/
+&OBST XB= 25.8, 32.2, 11.8, 20.6, 9.1, 9.3,  SURF_ID= 'Floor'/
+&OBST XB= 30.6, 38.6, 14.75, 23.55, 9.1, 9.3,  SURF_ID= 'Floor'/
+&OBST XB= 37, 45, 17.7, 26.5, 9.1, 9.3,  SURF_ID= 'Floor'/
+&OBST XB= 45, 51.4, 20.65, 32.4, 9.1, 9.3,  SURF_ID= 'Floor'/
+&OBST XB= 20.8, 27.2, 17.65, 20.65, 9.1, 9.3,  SURF_ID= 'Floor'/ 3층 끝
+
+
+
+
+&OBST XB= 0, 6.4, 0, 0.1, 9.2, 12.3,  SURF_ID= 'XWall' / 방1
+&OBST XB= 0, 1.0, 1.0, 1.1, 9.2, 12.3,  SURF_ID= 'XWall' /
+&HOLE XB= 2.8, 5.8, -0.1, 0.1, 9.4, 11.4,  COLOR='SKY BLUE',  DEVC_ID='RoomWindow' / 방1창문
+&OBST XB= 0, 3, 8.8, 8.9, 9.2, 12.3,  SURF_ID= 'RxWall'/
+&OBST XB= 0, 3, 5.85, 5.95, 9.2, 12.3,  SURF_ID= 'RxWall'/
+&OBST XB= 4.9, 6.4, 7.15, 7.25, 9.2, 12.3,  SURF_ID= 'RxWall'/
+&OBST XB= 4.9, 6.4, 10.05, 10.15, 9.2, 12.3,  SURF_ID= 'RxWall'/
+
+&OBST XB= 6.4, 12.8, 2.95, 3.05, 9.2, 12.3,  SURF_ID= 'XWall' / 방2
+&OBST XB= 6.4, 8.9, 3.95, 4.05, 9.2, 12.3,  SURF_ID= 'XWall' /
+&HOLE XB= 9.2, 12.2, 2.95, 3.05, 9.4, 11.4,  COLOR='SKY BLUE',  DEVC_ID='RoomWindow' / 방2창문
+&OBST XB= 6.4, 8.9, 7.75, 7.85, 9.2, 12.3,  SURF_ID= 'RxWall'/
+&OBST XB= 10.3, 12.8, 7.75, 7.85, 9.2, 12.3,  SURF_ID= 'RxWall'/
+
+&OBST XB= 12.8, 19.4, 5.9, 6, 9.2, 10.3,  SURF_ID= 'XWall' / 테라스
+
+&OBST XB= 19.4, 25.8, 8.85, 8.95, 9.2, 12.3,  SURF_ID= 'XWall' / 방3
+&HOLE XB= 22.2, 25.2, 8.85, 8.95, 9.4, 11.4,  COLOR='SKY BLUE',  DEVC_ID='RoomWindow' / 방3창문
+&OBST XB= 19.4, 21.9, 10.35, 10.45, 9.2, 12.3,  SURF_ID= 'RxWall'/
+&OBST XB= 19.4, 21.9, 14.35, 14.45, 9.2, 12.3,  SURF_ID= 'RxWall'/
+&OBST XB= 23.3, 25.8, 14.35, 14.45, 9.2, 12.3,  SURF_ID= 'RxWall'/
+&HOLE XB= 23.5, 24.5, 14.35, 14.45, 9.3, 11.3,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방3문
+
+&OBST XB= 25.8, 32.2, 11.8, 11.9, 9.2, 12.3,  SURF_ID= 'XWall' / 방4
+&HOLE XB= 28.6, 31.6, 11.8, 11.9, 9.4, 11.4,  COLOR='SKY BLUE',  DEVC_ID='RoomWindow' / 방4창문
+&OBST XB= 25.8, 29.0, 13.4, 13.5, 9.2, 12.3,  SURF_ID= 'RxWall'/
+&OBST XB= 25.8, 29.0, 17.4, 17.5, 9.2, 12.3,  SURF_ID= 'RxWall'/
+&OBST XB= 29.7, 32.2, 17.4, 17.5, 9.2, 12.3,  SURF_ID= 'RxWall'/
+&HOLE XB= 29.9, 30.9, 17.4, 17.5, 9.3, 11.3,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방4문
+
+&OBST XB= 32.2, 38.6, 14.75, 14.85, 9.2, 12.3,  SURF_ID= 'XWall' / 방5
+&HOLE XB= 35, 38, 14.75, 14.85, 9.4, 11.4,  COLOR='SKY BLUE',  DEVC_ID='RoomWindow' / 방5창문
+&OBST XB= 32.2, 34.7, 16.35, 16.45, 9.2, 12.3,  SURF_ID= 'RxWall'/
+&OBST XB= 32.2, 34.7, 20.35, 20.45, 9.2, 12.3,  SURF_ID= 'RxWall'/
+&OBST XB= 36.1, 38.6, 20.35, 20.45, 9.2, 12.3,  SURF_ID= 'RxWall'/
+&HOLE XB= 36.3, 37.3, 20.35, 20.45, 9.3, 11.3,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방5문
+
+&OBST XB= 38.6, 45, 17.7, 17.8, 9.2, 12.3,  SURF_ID= 'XWall' / 방6
+&HOLE XB= 42.4, 44.4, 17.7, 17.8, 9.4, 11.4,  COLOR='SKY BLUE',  DEVC_ID='RoomWindow' / 방6창문
+&OBST XB= 38.6, 42.0, 19.3, 19.4, 9.2, 12.3,  SURF_ID= 'RxWall'/
+&OBST XB= 38.6, 42.0 23.3, 23.4, 9.2, 12.3,  SURF_ID= 'RxWall'/
+&OBST XB= 42.5, 45, 23.3, 23.4, 9.2, 12.3,  SURF_ID= 'RxWall'/
+&HOLE XB= 42.7, 43.7, 23.3, 23.4, 9.3, 11.3,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방6문
+
+&OBST XB= 45, 51.4, 20.65, 20.75, 9.2, 12.3,  SURF_ID= 'XWall' / 방7
+&HOLE XB= 47.8, 50.8, 20.65, 20.75, 9.4, 11.4,  COLOR='SKY BLUE',  DEVC_ID='RoomWindow' / 방7창문
+&OBST XB= 45, 47.5, 24.9, 25, 9.2, 12.3,  SURF_ID= 'RxWall'/
+&OBST XB= 45, 47.5, 22.15, 22.25, 9.2, 12.3,  SURF_ID= 'RxWall'/
+&OBST XB= 48.2, 51.4, 28.4, 28.5, 9.2, 12.3,  SURF_ID= 'RxWall'/
+&OBST XB= 45, 47.5, 25.9, 26.0, 9.2, 12.3,  SURF_ID= 'RxWall'/
+&OBST XB= 45, 51.4, 30.4, 30.5, 9.2, 12.3,  SURF_ID= 'RxWall'/
+
+
+&OBST XB= 6.4, 19.4, 10.15, 10.25, 9.2, 12.3,  SURF_ID= 'XWall' /
+&HOLE XB= 9.1, 10.1, 10.15, 10.25, 9.3, 11.3,  COLOR='BLACK',  DEVC_ID='HomeDoor' / 방2현관
+&HOLE XB= 18, 19, 10.15, 10.25, 9.3, 11.3,  COLOR='BLACK',  DEVC_ID='HomeDoor'  / 테라스현관
+
+&OBST XB= 0, 17.8, 11.75, 11.85, 9.2, 12.3,  SURF_ID= 'XWall' /
+&HOLE XB= 7.4, 17.8, 11.75, 11.85, 10.2, 11.3,  COLOR='MINT',  DEVC_ID='BackWindow' /복도창
+&OBST XB= 19.4, 25.8, 16.05, 16.15, 9.2, 12.3,  SURF_ID= 'XWall' /
+&HOLE XB= 22.1, 23.1, 16.05, 16.15, 9.3, 11.3,  COLOR='BLACK',  DEVC_ID='HomeDoor'  / 방3현관
+
+&OBST XB= 25.8, 32.2, 19, 19.1, 9.2, 12.3,  SURF_ID= 'XWall' /
+&HOLE XB= 28.5, 29.5, 19, 19.1, 9.3, 11.3,  COLOR='BLACK',  DEVC_ID='HomeDoor'  / 방4현관
+
+&OBST XB= 32.2, 38.6, 21.95, 22.05, 9.2, 12.3,  SURF_ID= 'XWall' /
+&HOLE XB= 34.9, 35.9, 21.95, 22.05, 9.3, 11.3,  COLOR='BLACK',  DEVC_ID='HomeDoor'  / 방5현관
+
+&OBST XB= 38.6, 45, 24.9, 25, 9.2, 12.3,  SURF_ID= 'XWall' /
+&HOLE XB= 42.0, 43.0, 24.9, 25, 9.3, 11.3,  COLOR='BLACK',  DEVC_ID='HomeDoor'  / 방6현관
+
+
+&OBST XB= 17.8, 24.2, 20.65, 20.75, 9.2, 12.3,  SURF_ID= 'XWall' /
+&OBST XB= 17.8, 20.8, 17.65, 17.75, 9.2, 12.3,  SURF_ID= 'XWall' /
+&OBST XB= 24.2, 27.2, 25.65, 25.75, 9.2, 12.3,  SURF_ID= 'XWall' /
+&OBST XB= 27.2, 30.6, 20.6, 20.7, 9.2, 12.3,  SURF_ID= 'XWall' /
+&HOLE XB= 28.2, 30.6, 20.6, 20.7, 10.2, 11.3,  COLOR='MINT',  DEVC_ID='BackWindow' /복도창
+&OBST XB= 30.6, 37, 23.55, 23.65, 9.2, 12.3,  SURF_ID= 'XWall' /
+&HOLE XB= 30.6, 37, 23.55, 23.65, 10.2, 11.3,  COLOR='MINT',  DEVC_ID='BackWindow' /복도창
+&OBST XB= 37, 45, 26.5, 26.6, 9.2, 12.3,  SURF_ID= 'XWall' /
+&HOLE XB= 37, 44, 26.5, 26.6, 10.2, 11.3,  COLOR='MINT',  DEVC_ID='BackWindow' /복도창
+
+
+
+&OBST XB= 0, 0.1, 0, 11.75, 9.2, 12.3,  SURF_ID= 'YWall' / 방1
+&OBST XB= 1.0, 1.1, 0.0, 1.1, 9.2, 12.3,  SURF_ID= 'RyWall'/
+&HOLE XB= 1.0, 1.1, 0.0, 1.0, 9.3, 11.3,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방1문
+&OBST XB= 3, 3.1, 5.75, 11.75, 9.2, 12.3,  SURF_ID= 'RyWall'/
+&HOLE XB= 3, 3.1, 9, 10, 9.3, 11.3,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방1문
+&HOLE XB= 3, 3.1, 7.7, 8.7, 9.3, 11.3,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방1문
+&OBST XB= 4.9, 5, 7.15, 10.15, 9.2, 12.3,  SURF_ID= 'RyWall'/
+&HOLE XB= 4.9, 5, 9.05, 10.05, 9.3, 11.3,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방1문
+&HOLE XB= 6.4, 6.5, 10.35, 11.35, 9.3, 11.3,  COLOR='BLACK',  DEVC_ID='HomeDoor'  / 방1현관
+
+&OBST XB= 6.4, 6.5, 0, 11.75, 9.2, 12.3,  SURF_ID= 'YWall' / 방2
+&HOLE XB= 8.9, 9, 3.0, 4.0, 9.3, 11.3,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방2문
+&HOLE XB= 8.9, 9, 7.0, 8.0, 9.3, 11.3,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방2문
+&OBST XB= 8.9, 9, 2.95, 10.15, 9.2, 12.3,  SURF_ID= 'RyWall'/
+&HOLE XB= 8.9, 9, 8.05, 9.05, 9.3, 11.3,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방2문
+&OBST XB= 10.3, 10.4, 7.75, 10.15, 9.2, 12.3,  SURF_ID= 'RyWall'/
+&HOLE XB= 10.3, 10.4, 8.05, 9.05, 9.3, 11.3,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방2문
+
+&OBST XB= 12.8, 12.9, 2.95, 10.15, 9.2, 12.3,  SURF_ID= 'YWall' /
+&OBST XB= 17.8, 17.9, 11.75, 20.65, 9.2, 12.3,  SURF_ID= 'YWall' /
+&HOLE XB= 17.8, 17.9, 11.75, 16.65, 10.2, 11.3,  COLOR='MINT',  DEVC_ID='BackWindow' /복도창
+
+&OBST XB= 19.4, 19.5, 5.9, 8.85, 9.2, 10.3,  SURF_ID= 'YWall' / 테라스
+&OBST XB= 19.4, 19.5, 8.85, 16.05, 9.2, 12.3,  SURF_ID= 'YWall' / 방3
+&OBST XB= 21.9, 22, 8.85, 16.05, 9.2, 12.3,  SURF_ID= 'RyWall'/
+&HOLE XB= 21.9, 22, 9.35, 10.35, 9.3, 11.3,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방3문
+&HOLE XB= 21.9, 22, 13.35, 14.35, 9.3, 11.3,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방3문
+&HOLE XB= 21.9, 22, 14.55, 15.55, 9.3, 11.3,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방3문
+&OBST XB= 23.3, 23.4, 14.35, 16.05, 9.2, 12.3,  SURF_ID= 'RyWall'/
+
+&OBST XB= 25.8, 25.9, 8.85, 19, 9.2, 12.3,  SURF_ID= 'YWall' / 방4
+&OBST XB= 29.0, 29.1, 11.8, 19, 9.2, 12.3,  SURF_ID= 'RyWall'/
+&HOLE XB= 29.0, 29.1, 12.3, 13.3, 9.3, 11.3,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방4문
+&HOLE XB= 29.0, 29.1, 16.3, 17.3, 9.3, 11.3,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방4문
+&HOLE XB= 29.0, 29.1, 17.5, 18.5, 9.3, 11.3,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방4문
+&OBST XB= 29.7, 29.8, 17.4, 19, 9.2, 12.3,  SURF_ID= 'RyWall'/
+
+&OBST XB= 32.2, 32.3, 11.8, 21.95, 9.2, 12.3,  SURF_ID= 'YWall' / 방5
+&OBST XB= 34.7, 34.8, 14.75, 21.95, 9.2, 12.3,  SURF_ID= 'RyWall'/
+&HOLE XB= 34.7, 34.8, 15.25, 16.25, 9.3, 11.3,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방5문
+&HOLE XB= 34.7, 34.8, 19.25, 20.25, 9.3, 11.3,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방5문
+&HOLE XB= 34.7, 34.8, 20.45, 21.45, 9.3, 11.3,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방5문
+&OBST XB= 36.1, 36.2, 20.35, 21.95, 9.2, 12.3,  SURF_ID= 'RyWall'/
+
+&OBST XB= 38.6, 38.7, 14.75, 24.9, 9.2, 12.3,  SURF_ID= 'YWall' / 방6
+&OBST XB= 42.1, 42.2, 17.7, 24.9, 9.2, 12.3,  SURF_ID= 'RyWall'/
+&HOLE XB= 42.1, 42.2, 18.2, 19.2, 9.3, 11.3,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방6문
+&HOLE XB= 42.1, 42.2, 22.2, 23.2, 9.3, 11.3,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방6문
+&HOLE XB= 42.1, 42.2, 23.4, 24.4, 9.3, 11.3,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방6문
+&OBST XB= 42.5, 42.6, 23.3, 24.9, 9.2, 12.3,  SURF_ID= 'RyWall'/
+
+&OBST XB= 24.2, 24.3, 20.65, 25.65, 9.2, 12.3,  SURF_ID= 'YWall' /
+&OBST XB= 27.2, 27.3, 20.6, 25.65, 9.2, 12.3,  SURF_ID= 'YWall' /
+&OBST XB= 30.6, 30.7, 20.6, 23.55, 9.2, 12.3,  SURF_ID= 'YWall' /
+&HOLE XB= 30.6, 30.7, 20.6, 23.55, 10.2, 11.3,  COLOR='MINT',  DEVC_ID='BackWindow' /복도창
+&OBST XB= 37, 37.1, 23.55, 26.5, 9.2, 12.3,  SURF_ID= 'YWall' /
+&HOLE XB= 37, 37.1, 23.55, 26.5, 10.2, 11.3,  COLOR='MINT',  DEVC_ID='BackWindow' /복도창
+
+&OBST XB= 45, 45.1, 17.7, 30.4, 9.2, 12.3,  SURF_ID= 'YWall' / 방7
+&HOLE XB= 45, 45.1, 26.2, 27.2, 9.3, 11.3,  COLOR='BLACK',  DEVC_ID='HomeDoor'  / 방7현관
+&OBST XB= 47.5, 47.6, 20.65, 25.9, 9.2, 12.3,  SURF_ID= 'RyWall' /
+&HOLE XB= 47.5, 47.6, 24.95, 25.85, 9.3, 11.3,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방7문
+&HOLE XB= 47.5, 47.6, 20.95, 21.95, 9.3, 11.3,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방7문
+&HOLE XB= 47.5, 47.6, 23.6, 24.6, 9.3, 11.3,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방7문
+&OBST XB= 48.1, 48.2, 28.4, 30.4, 9.2, 12.3,  SURF_ID= 'RyWall' /
+&HOLE XB= 48.1, 48.2, 28.9, 29.9, 9.3, 11.3,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방7문
+
+&OBST XB= 51.4, 51.5, 20.65, 30.4, 9.2, 12.3,  SURF_ID= 'YWall' /
+
+&OBST XB= 20.7, 20.8, 17.75, 20.55, 9.3, 12.2,  SURF_ID= 'Elevator' /엘베문
+
+
+&OBST XB= 25.7, 27.2, 20.65, 23.15, 9.9, 10,  SURF_ID= 'Stair' /
+&OBST XB= 24.2, 27.2, 23.15, 25.65, 10.7, 10.8,  SURF_ID= 'Stair' /
+&OBST XB= 24.2, 25.7, 20.65, 23.15, 11.5, 11.6,  SURF_ID= 'Stair' /
+&OBST XB= 25.7, 27.2, 20.65, 20.75, 9.2, 9.9,  SURF_ID= 'Stair' /
+&OBST XB= 25.7, 27.2, 23.15, 23.25, 10, 10.7,  SURF_ID= 'Stair' /
+&OBST XB= 24.2, 25.7, 20.65, 20.75, 11.6, 12.3,  SURF_ID= 'Stair' /
+&OBST XB= 24.2, 25.7, 23.15, 23.25, 10.8, 11.5,  SURF_ID= 'Stair' /
+
+
+&OBST XB= 0, 6.4, 0, 11.75, 12.2, 12.4,  SURF_ID= 'Floor'/
+&OBST XB= 6.4, 12.8, 2.95, 11.75, 12.2, 12.4,  SURF_ID= 'Floor'/
+&OBST XB= 12.8, 19.4, 5.9, 11.75, 12.2, 12.4,  SURF_ID= 'Floor'/
+&OBST XB= 17.8, 25.8, 8.85, 17.65, 12.2, 12.4,  SURF_ID= 'Floor'/
+&OBST XB= 25.8, 32.2, 11.8, 20.6, 12.2, 12.4,  SURF_ID= 'Floor'/
+&OBST XB= 30.6, 38.6, 14.75, 23.55, 12.2, 12.4,  SURF_ID= 'Floor'/
+&OBST XB= 37, 45, 17.7, 26.5, 12.2, 12.4,  SURF_ID= 'Floor'/
+&OBST XB= 45, 51.4, 20.65, 30.4, 12.2, 12.4,  SURF_ID= 'Floor'/
+&OBST XB= 20.8, 27.2, 17.65, 20.65, 12.2, 12.4,  SURF_ID= 'Floor'/4층 끝
+
+
+
+
+
+&OBST XB= 0, 6.4, 0, 0.1, 12.3, 15.4,  SURF_ID= 'XWall' / 방1
+&OBST XB= 0, 1.0, 1.0, 1.1, 12.3, 15.4,  SURF_ID= 'XWall' /
+&HOLE XB= 2.8, 5.8, -0.1, 0.1, 12.4, 14.4,  COLOR='SKY BLUE',  DEVC_ID='RoomWindow' / 방1창문
+&OBST XB= 0, 3, 8.8, 8.9, 12.3, 15.4,  SURF_ID= 'RxWall'/
+&OBST XB= 0, 3, 5.85, 5.95, 12.3, 15.4,  SURF_ID= 'RxWall'/
+&OBST XB= 4.9, 6.4, 7.15, 7.25, 12.3, 15.4,  SURF_ID= 'RxWall'/
+&OBST XB= 4.9, 6.4, 10.05, 10.15, 12.3, 15.4,  SURF_ID= 'RxWall'/
+
+&OBST XB= 6.4, 12.8, 2.95, 3.05, 12.3, 15.4,  SURF_ID= 'XWall' / 방2
+&OBST XB= 6.4, 8.9, 3.95, 4.05, 12.3, 15.4,  SURF_ID= 'XWall' /
+&HOLE XB= 9.2, 12.2, 2.95, 3.05, 12.4, 14.4,  COLOR='SKY BLUE',  DEVC_ID='RoomWindow' / 방2창문
+&OBST XB= 6.4, 8.9, 7.75, 7.85, 12.3, 15.4,  SURF_ID= 'RxWall'/
+&OBST XB= 10.3, 12.8, 7.75, 7.85, 12.3, 15.4,  SURF_ID= 'RxWall'/
+
+&OBST XB= 12.8, 19.4, 5.9, 6, 12.3, 13.4,  SURF_ID= 'XWall' / 테라스
+
+&OBST XB= 19.4, 25.8, 8.85, 8.95, 12.3, 15.4,  SURF_ID= 'XWall' / 방3
+&HOLE XB= 22.2, 25.2, 8.85, 8.95, 12.4, 14.4,  COLOR='SKY BLUE',  DEVC_ID='RoomWindow' / 방3창문
+&OBST XB= 19.4, 21.9, 10.35, 10.45, 12.3, 15.4,  SURF_ID= 'RxWall'/
+&OBST XB= 19.4, 21.9, 14.35, 14.45, 12.3, 15.4,  SURF_ID= 'RxWall'/
+&OBST XB= 23.3, 25.8, 14.35, 14.45, 12.3, 15.4,  SURF_ID= 'RxWall'/
+&HOLE XB= 23.5, 24.5, 14.35, 14.45, 12.4, 14.4,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방3문
+
+&OBST XB= 25.8, 32.2, 11.8, 11.9, 12.3, 15.4,  SURF_ID= 'XWall' / 방4
+&HOLE XB= 28.6, 31.6, 11.8, 11.9, 12.4, 14.4,  COLOR='SKY BLUE',  DEVC_ID='RoomWindow' / 방4창문
+&OBST XB= 25.8, 29.0, 13.4, 13.5, 12.3, 15.4,  SURF_ID= 'RxWall'/
+&OBST XB= 25.8, 29.0, 17.4, 17.5, 12.3, 15.4,  SURF_ID= 'RxWall'/
+&OBST XB= 29.7, 32.2, 17.4, 17.5, 12.3, 15.4,  SURF_ID= 'RxWall'/
+&HOLE XB= 29.9, 30.9, 17.4, 17.5, 12.4, 14.4,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방4문
+
+&OBST XB= 32.2, 38.6, 14.75, 14.85, 12.3, 15.4,  SURF_ID= 'XWall' / 방5
+&HOLE XB= 35, 38, 14.75, 14.85, 12.4, 14.4,  COLOR='SKY BLUE',  DEVC_ID='RoomWindow' / 방5창문
+&OBST XB= 32.2, 34.7, 16.35, 16.45, 12.3, 15.4,  SURF_ID= 'RxWall'/
+&OBST XB= 32.2, 34.7, 20.35, 20.45, 12.3, 15.4,  SURF_ID= 'RxWall'/
+&OBST XB= 36.1, 38.6, 20.35, 20.45, 12.3, 15.4,  SURF_ID= 'RxWall'/
+&HOLE XB= 36.3, 37.3, 20.35, 20.45, 12.4, 14.4,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방5문
+
+&OBST XB= 38.6, 45, 17.7, 17.8, 12.3, 15.4,  SURF_ID= 'XWall' / 방6
+&HOLE XB= 42.4, 44.4, 17.7, 17.8, 12.4, 14.4,  COLOR='SKY BLUE',  DEVC_ID='RoomWindow' / 방6창문
+&OBST XB= 38.6, 42.0, 19.3, 19.4, 12.3, 15.4,  SURF_ID= 'RxWall'/
+&OBST XB= 38.6, 42.0 23.3, 23.4, 12.3, 15.4,  SURF_ID= 'RxWall'/
+&OBST XB= 42.5, 45, 23.3, 23.4, 12.3, 15.4,  SURF_ID= 'RxWall'/
+&HOLE XB= 42.7, 43.7, 23.3, 23.4, 12.4, 14.4,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방6문
+
+&OBST XB= 45, 51.4, 20.65, 20.75, 12.3, 15.4,  SURF_ID= 'XWall' / 방7
+&HOLE XB= 47.8, 50.8, 20.65, 20.75, 12.4, 14.4,  COLOR='SKY BLUE',  DEVC_ID='RoomWindow' / 방7창문
+&OBST XB= 45, 47.5, 24.9, 25, 12.3, 15.4,  SURF_ID= 'RxWall'/
+&OBST XB= 45, 47.5, 22.15, 22.25, 12.3, 15.4,  SURF_ID= 'RxWall'/
+&OBST XB= 48.2, 51.4, 28.4, 28.5, 12.3, 15.4,  SURF_ID= 'RxWall'/
+&OBST XB= 45, 47.5, 25.9, 26.0, 12.3, 15.4,  SURF_ID= 'RxWall'/
+&OBST XB= 45, 51.4, 30.4, 30.5, 12.3, 15.4,  SURF_ID= 'RxWall'/
+
+
+&OBST XB= 6.4, 19.4, 10.15, 10.25, 12.3, 15.4,  SURF_ID= 'XWall' /
+&HOLE XB= 9.1, 10.1, 10.15, 10.25, 12.4, 14.4,  COLOR='BLACK',  DEVC_ID='HomeDoor' / 방2현관
+&HOLE XB= 18, 19, 10.15, 10.25, 12.4, 14.4,  COLOR='BLACK',  DEVC_ID='HomeDoor'  / 테라스현관
+
+&OBST XB= 0, 17.8, 11.75, 11.85, 12.3, 15.4,  SURF_ID= 'XWall' /
+&HOLE XB= 7.4, 17.8, 11.75, 11.85, 13.3, 14.4,  COLOR='MINT',  DEVC_ID='BackWindow' /복도창
+&OBST XB= 19.4, 25.8, 16.05, 16.15, 12.3, 15.4,  SURF_ID= 'XWall' /
+&HOLE XB= 22.1, 23.1, 16.05, 16.15, 12.4, 14.4,  COLOR='BLACK',  DEVC_ID='HomeDoor'  / 방3현관
+
+&OBST XB= 25.8, 32.2, 19, 19.1, 12.3, 15.4,  SURF_ID= 'XWall' /
+&HOLE XB= 28.5, 29.5, 19, 19.1, 12.4, 14.4,  COLOR='BLACK',  DEVC_ID='HomeDoor'  / 방4현관
+
+&OBST XB= 32.2, 38.6, 21.95, 22.05, 12.3, 15.4,  SURF_ID= 'XWall' /
+&HOLE XB= 34.9, 35.9, 21.95, 22.05, 12.4, 14.4,  COLOR='BLACK',  DEVC_ID='HomeDoor'  / 방5현관
+
+&OBST XB= 38.6, 45, 24.9, 25, 12.3, 15.4,  SURF_ID= 'XWall' /
+&HOLE XB= 42.0, 43.0, 24.9, 25, 12.4, 14.4,  COLOR='BLACK',  DEVC_ID='HomeDoor'  / 방6현관
+
+
+&OBST XB= 17.8, 24.2, 20.65, 20.75, 12.3, 15.4,  SURF_ID= 'XWall' /
+&OBST XB= 17.8, 20.8, 17.65, 17.75, 12.3, 15.4,  SURF_ID= 'XWall' /
+&OBST XB= 24.2, 27.2, 25.65, 25.75, 12.3, 15.4,  SURF_ID= 'XWall' /
+&OBST XB= 27.2, 30.6, 20.6, 20.7, 12.3, 15.4,  SURF_ID= 'XWall' /
+&HOLE XB= 28.2, 30.6, 20.6, 20.7, 13.3, 14.4,  COLOR='MINT',  DEVC_ID='BackWindow' /복도창
+&OBST XB= 30.6, 37, 23.55, 23.65, 12.3, 15.4,  SURF_ID= 'XWall' /
+&HOLE XB= 30.6, 37, 23.55, 23.65, 13.3, 14.4,  COLOR='MINT',  DEVC_ID='BackWindow' /복도창
+&OBST XB= 37, 45, 26.5, 26.6, 12.3, 15.4,  SURF_ID= 'XWall' /
+&HOLE XB= 37, 44, 26.5, 26.6, 13.3, 14.4,  COLOR='MINT',  DEVC_ID='BackWindow' /복도창
+
+
+
+&OBST XB= 0, 0.1, 0, 11.75, 12.3, 15.4,  SURF_ID= 'YWall' / 방1
+&OBST XB= 1.0, 1.1, 0.0, 1.1, 12.3, 15.4,  SURF_ID= 'RyWall'/
+&HOLE XB= 1.0, 1.1, 0.0, 1.0, 12.4, 14.4,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방1문
+&OBST XB= 3, 3.1, 5.75, 11.75, 12.3, 15.4,  SURF_ID= 'RyWall'/
+&HOLE XB= 3, 3.1, 9, 10, 12.4, 14.4,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방1문
+&HOLE XB= 3, 3.1, 7.7, 8.7, 12.4, 14.4,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방1문
+&OBST XB= 4.9, 5, 7.15, 10.15, 12.3, 15.4,  SURF_ID= 'RyWall'/
+&HOLE XB= 4.9, 5, 9.05, 10.05, 12.4, 14.4,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방1문
+&HOLE XB= 6.4, 6.5, 10.35, 11.35, 12.4, 14.4,  COLOR='BLACK',  DEVC_ID='HomeDoor'  / 방1현관
+
+&OBST XB= 6.4, 6.5, 0, 11.75, 12.3, 15.4,  SURF_ID= 'YWall' / 방2
+&HOLE XB= 8.9, 9, 3.0, 4.0, 12.4, 14.4,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방2문
+&HOLE XB= 8.9, 9, 7.0, 8.0, 12.4, 14.4,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방2문
+&OBST XB= 8.9, 9, 2.95, 10.15, 12.3, 15.4,  SURF_ID= 'RyWall'/
+&HOLE XB= 8.9, 9, 8.05, 9.05, 12.4, 14.4,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방2문
+&OBST XB= 10.3, 10.4, 7.75, 10.15, 12.3, 15.4,  SURF_ID= 'RyWall'/
+&HOLE XB= 10.3, 10.4, 8.05, 9.05, 12.4, 14.4,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방2문
+
+&OBST XB= 12.8, 12.9, 2.95, 10.15, 12.3, 15.4,  SURF_ID= 'YWall' /
+&OBST XB= 17.8, 17.9, 11.75, 20.65, 12.3, 15.4,  SURF_ID= 'YWall' /
+&HOLE XB= 17.8, 17.9, 11.75, 16.65, 13.3, 14.4,  COLOR='MINT',  DEVC_ID='BackWindow' /복도창
+
+&OBST XB= 19.4, 19.5, 5.9, 8.85, 12.3, 13.4,  SURF_ID= 'YWall' / 테라스
+&OBST XB= 19.4, 19.5, 8.85, 16.05, 12.3, 15.4,  SURF_ID= 'YWall' / 방3
+&OBST XB= 21.9, 22, 8.85, 16.05, 12.3, 15.4,  SURF_ID= 'RyWall'/
+&HOLE XB= 21.9, 22, 9.35, 10.35, 12.4, 14.4,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방3문
+&HOLE XB= 21.9, 22, 13.35, 14.35, 12.4, 14.4,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방3문
+&HOLE XB= 21.9, 22, 14.55, 15.55, 12.4, 14.4,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방3문
+&OBST XB= 23.3, 23.4, 14.35, 16.05, 12.3, 15.4,  SURF_ID= 'RyWall'/
+
+&OBST XB= 25.8, 25.9, 8.85, 19, 12.3, 15.4,  SURF_ID= 'YWall' / 방4
+&OBST XB= 29.0, 29.1, 11.8, 19, 12.3, 15.4,  SURF_ID= 'RyWall'/
+&HOLE XB= 29.0, 29.1, 12.3, 13.3, 12.4, 14.4,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방4문
+&HOLE XB= 29.0, 29.1, 16.3, 17.3, 12.4, 14.4,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방4문
+&HOLE XB= 29.0, 29.1, 17.5, 18.5, 12.4, 14.4,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방4문
+&OBST XB= 29.7, 29.8, 17.4, 19, 12.3, 15.4,  SURF_ID= 'RyWall'/
+
+&OBST XB= 32.2, 32.3, 11.8, 21.95, 12.3, 15.4,  SURF_ID= 'YWall' / 방5
+&OBST XB= 34.7, 34.8, 14.75, 21.95, 12.3, 15.4,  SURF_ID= 'RyWall'/
+&HOLE XB= 34.7, 34.8, 15.25, 16.25, 12.4, 14.4,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방5문
+&HOLE XB= 34.7, 34.8, 19.25, 20.25, 12.4, 14.4,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방5문
+&HOLE XB= 34.7, 34.8, 20.45, 21.45, 12.4, 14.4,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방5문
+&OBST XB= 36.1, 36.2, 20.35, 21.95, 12.3, 15.4,  SURF_ID= 'RyWall'/
+
+&OBST XB= 38.6, 38.7, 14.75, 24.9, 12.3, 15.4,  SURF_ID= 'YWall' / 방6
+&OBST XB= 42.1, 42.2, 17.7, 24.9, 12.3, 15.4,  SURF_ID= 'RyWall'/
+&HOLE XB= 42.1, 42.2, 18.2, 19.2, 12.4, 14.4,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방6문
+&HOLE XB= 42.1, 42.2, 22.2, 23.2, 12.4, 14.4,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방6문
+&HOLE XB= 42.1, 42.2, 23.4, 24.4, 12.4, 14.4,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방6문
+&OBST XB= 42.5, 42.6, 23.3, 24.9, 12.3, 15.4,  SURF_ID= 'RyWall'/
+
+&OBST XB= 24.2, 24.3, 20.65, 25.65, 12.3, 15.4,  SURF_ID= 'YWall' /
+&OBST XB= 27.2, 27.3, 20.6, 25.65, 12.3, 15.4,  SURF_ID= 'YWall' /
+&OBST XB= 30.6, 30.7, 20.6, 23.55, 12.3, 15.4,  SURF_ID= 'YWall' /
+&HOLE XB= 30.6, 30.7, 20.6, 23.55, 13.3, 14.4,  COLOR='MINT',  DEVC_ID='BackWindow' /복도창
+&OBST XB= 37, 37.1, 23.55, 26.5, 12.3, 15.4,  SURF_ID= 'YWall' /
+&HOLE XB= 37, 37.1, 23.55, 26.5, 13.3, 14.4,  COLOR='MINT',  DEVC_ID='BackWindow' /복도창
+
+&OBST XB= 45, 45.1, 17.7, 30.4, 12.3, 15.4,  SURF_ID= 'YWall' / 방7
+&HOLE XB= 45, 45.1, 26.2, 27.2, 12.4, 14.4,  COLOR='BLACK',  DEVC_ID='HomeDoor'  / 방7현관
+&OBST XB= 47.5, 47.6, 20.65, 25.9, 12.3, 15.4,  SURF_ID= 'RyWall' /
+&HOLE XB= 47.5, 47.6, 24.95, 25.85, 12.4, 14.4,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방7문
+&HOLE XB= 47.5, 47.6, 20.95, 21.95, 12.4, 14.4,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방7문
+&HOLE XB= 47.5, 47.6, 23.6, 24.6, 12.4, 14.4,  COLOR='BROWN', DEVC_ID='RoomDoor' / 방7문
+&OBST XB= 48.1, 48.2, 28.4, 30.4, 12.3, 15.4,  SURF_ID= 'RyWall' /
+&HOLE XB= 48.1, 48.2, 28.9, 29.9, 12.4, 14.4,  COLOR='BROWN', DEVC_ID='RoomDoor'/ 방7문
+
+&OBST XB= 51.4, 51.5, 20.65, 30.4, 12.3, 15.4,  SURF_ID= 'YWall' /
+
+&OBST XB= 20.7, 20.8, 17.75, 20.55, 12.4, 15.3,  SURF_ID= 'Elevator' /엘베문
+
+
+
+&OBST XB= 25.7, 27.2, 20.65, 23.15, 13, 13.1,  SURF_ID= 'Stair' /
+&OBST XB= 24.2, 27.2, 23.15, 25.65, 13.8, 13.9,  SURF_ID= 'Stair' /
+&OBST XB= 24.2, 25.7, 20.65, 23.15, 14.6, 14.7,  SURF_ID= 'Stair' /
+&OBST XB= 25.7, 27.2, 20.65, 20.75, 12.3, 13,  SURF_ID= 'Stair' /
+&OBST XB= 25.7, 27.2, 23.15, 23.25, 13.1, 13.8,  SURF_ID= 'Stair' /
+&OBST XB= 24.2, 25.7, 20.65, 20.75, 14.7, 15.4,  SURF_ID= 'Stair' /
+&OBST XB= 24.2, 25.7, 23.15, 23.25, 13.9, 14.6,  SURF_ID= 'Stair' /
+
+
+&OBST XB= 24.2, 27.2, 20.65, 20.75, 15.4, 18.1,  SURF_ID= 'XWall' /
+&HOLE XB= 24.5, 25.5, 20.65, 20.75, 15.0, 17.0,  COLOR='BLACK',  DEVC_ID='HomeDoor' / 옥상문
+&OBST XB= 24.2, 27.2, 25.65, 25.75, 15.4, 18.1,  SURF_ID= 'XWall' /
+&OBST XB= 24.2, 24.3, 20.65, 25.75, 15.4, 18.1,  SURF_ID= 'YWall' /
+&OBST XB= 27.2, 27.3, 20.65, 25.75, 15.4, 18.1,  SURF_ID= 'YWall' /
+&OBST XB= 24.2, 27.2, 20.65, 25.75, 18, 18.2,  SURF_ID= 'Floor'/
+
+&OBST XB= 0, 6.4, 0, 11.75, 15.0, 15.2,  SURF_ID= 'Floor'/
+&OBST XB= 6.4, 12.8, 2.95, 11.75, 15.0, 15.2,  SURF_ID= 'Floor'/
+&OBST XB= 12.8, 19.4, 5.9, 11.75, 15.0, 15.2,  SURF_ID= 'Floor'/
+&OBST XB= 17.8, 25.8, 8.85, 20.65, 15.0, 15.2,  SURF_ID= 'Floor'/
+&OBST XB= 25.8, 32.2, 11.8, 20.6, 15.0, 15.2,  SURF_ID= 'Floor'/
+&OBST XB= 30.6, 38.6, 14.75, 23.55, 15.0, 15.2,  SURF_ID= 'Floor'/
+&OBST XB= 37, 45, 17.7, 26.5, 15.0, 15.2,  SURF_ID= 'Floor'/
+&OBST XB= 45, 51.4, 20.65, 32.4, 15.0, 15.2,  SURF_ID= 'Floor'/
+&OBST XB= 20.8, 27.2, 17.65, 20.65, 15.0, 15.2,  SURF_ID= 'Floor'/ 5층끝
+
+
+
+&PROP ID='Acme Heat', QUANTITY='LINK TEMPERATURE', ACTIVATION_TEMPERATURE=74./
+&PROP ID='Acme Smoke Detector I2', QUANTITY='CHAMBER OBSCURATION', LENGTH=1.8, ACTIVATION_OBSCURATION=15/
+
+&DEVC ID='heat01', XYZ=0.5, 0.5, 5.9, PROP_ID='Acme Heat'/1호베 2층
+&DEVC ID='heat02', XYZ=1.5, 8.0, 5.9, PROP_ID='Acme Heat'/1호다
+
+&DEVC ID='heat03', XYZ=11.5, 9.0, 5.9, PROP_ID='Acme Heat'/2호다
+
+&DEVC ID='heat04', XYZ=20.0, 9.5, 5.9, PROP_ID='Acme Heat'/3호베
+&DEVC ID='heat05', XYZ=21.0, 9.5, 5.9, PROP_ID='Acme Heat'/3호베
+&DEVC ID='heat06', XYZ=24.5, 15.0, 5.9, PROP_ID='Acme Heat'/3호다
+
+&DEVC ID='heat07', XYZ=27.0, 12.5, 5.9, PROP_ID='Acme Heat'/4호베
+&DEVC ID='heat08', XYZ=28.0, 12.5, 5.9, PROP_ID='Acme Heat'/4호베
+&DEVC ID='heat09', XYZ=31.0, 18.0, 5.9, PROP_ID='Acme Heat'/4호다
+
+&DEVC ID='heat10', XYZ=33.0, 15.5, 5.9, PROP_ID='Acme Heat'/5호베
+&DEVC ID='heat11', XYZ=34.0, 15.5, 5.9, PROP_ID='Acme Heat'/5호베
+&DEVC ID='heat12', XYZ=37.5, 21.0, 5.9, PROP_ID='Acme Heat'/5호다
+
+&DEVC ID='heat13', XYZ=40.0, 18.5, 5.9, PROP_ID='Acme Heat'/6호베
+&DEVC ID='heat14', XYZ=41.0, 18.5, 5.9, PROP_ID='Acme Heat'/6호베
+&DEVC ID='heat15', XYZ=44.0, 24.0, 5.9, PROP_ID='Acme Heat'/6호다
+
+&DEVC ID='heat16', XYZ=46.0, 21.5, 5.9, PROP_ID='Acme Heat'/7호베
+&DEVC ID='heat17', XYZ=47.0, 21.5, 5.9, PROP_ID='Acme Heat'/7호베
+&DEVC ID='heat18', XYZ=46.5, 25.5, 5.9, PROP_ID='Acme Heat'/7호다
+
+&DEVC ID='heat19', XYZ=0.5, 0.5, 8.9, PROP_ID='Acme Heat'/1호베 3층
+&DEVC ID='heat20', XYZ=1.5, 8.0, 8.9, PROP_ID='Acme Heat'/1호다
+
+&DEVC ID='heat21', XYZ=7.0, 3.5, 8.9, PROP_ID='Acme Heat'/2호베
+&DEVC ID='heat22', XYZ=8.0, 3.5, 8.9, PROP_ID='Acme Heat'/2호베
+&DEVC ID='heat23', XYZ=11.5, 9.0, 8.9, PROP_ID='Acme Heat'/2호다
+
+&DEVC ID='heat24', XYZ=20.0, 9.5, 8.9, PROP_ID='Acme Heat'/3호베
+&DEVC ID='heat25', XYZ=21.0, 9.5, 8.9, PROP_ID='Acme Heat'/3호베
+&DEVC ID='heat26', XYZ=24.5, 15.0, 8.9, PROP_ID='Acme Heat'/3호다
+
+&DEVC ID='heat27', XYZ=27.0, 12.5, 8.9, PROP_ID='Acme Heat'/4호베
+&DEVC ID='heat28', XYZ=28.0, 12.5, 8.9, PROP_ID='Acme Heat'/4호베
+&DEVC ID='heat29', XYZ=31.0, 18.0, 8.9, PROP_ID='Acme Heat'/4호다
+
+&DEVC ID='heat30', XYZ=33.0, 15.5, 8.9, PROP_ID='Acme Heat'/5호베
+&DEVC ID='heat31', XYZ=34.0, 15.5, 8.9, PROP_ID='Acme Heat'/5호베
+&DEVC ID='heat32', XYZ=37.5, 21.0, 8.9, PROP_ID='Acme Heat'/5호다
+
+&DEVC ID='heat33', XYZ=40.0, 18.5, 8.9, PROP_ID='Acme Heat'/6호베
+&DEVC ID='heat34', XYZ=41.0, 18.5, 8.9, PROP_ID='Acme Heat'/6호베
+&DEVC ID='heat35', XYZ=44.0, 24.0, 8.9, PROP_ID='Acme Heat'/6호다
+
+&DEVC ID='heat36', XYZ=46.0, 21.5, 8.9, PROP_ID='Acme Heat'/7호베
+&DEVC ID='heat37', XYZ=47.0, 21.5, 8.9, PROP_ID='Acme Heat'/7호베
+&DEVC ID='heat38', XYZ=46.5, 25.5, 8.9, PROP_ID='Acme Heat'/7호다
+
+&DEVC ID='heat39', XYZ=0.5, 0.5, 11.9, PROP_ID='Acme Heat'/1호베 4층
+&DEVC ID='heat40', XYZ=1.5, 8.0, 11.9, PROP_ID='Acme Heat'/1호다
+
+&DEVC ID='heat41', XYZ=7.0, 3.5, 11.9, PROP_ID='Acme Heat'/2호베
+&DEVC ID='heat42', XYZ=8.0, 3.5, 11.9, PROP_ID='Acme Heat'/2호베
+&DEVC ID='heat43', XYZ=11.5, 9.0, 11.9, PROP_ID='Acme Heat'/2호다
+
+&DEVC ID='heat44', XYZ=20.0, 9.5, 11.9, PROP_ID='Acme Heat'/3호베
+&DEVC ID='heat45', XYZ=21.0, 9.5, 11.9, PROP_ID='Acme Heat'/3호베
+&DEVC ID='heat46', XYZ=24.5, 15.0, 11.9, PROP_ID='Acme Heat'/3호다
+
+&DEVC ID='heat47', XYZ=27.0, 12.5, 11.9, PROP_ID='Acme Heat'/4호베
+&DEVC ID='heat48', XYZ=28.0, 12.5, 11.9, PROP_ID='Acme Heat'/4호베
+&DEVC ID='heat49', XYZ=31.0, 18.0, 11.9, PROP_ID='Acme Heat'/4호다
+
+&DEVC ID='heat50', XYZ=33.0, 15.5, 11.9, PROP_ID='Acme Heat'/5호베
+&DEVC ID='heat51', XYZ=34.0, 15.5, 11.9, PROP_ID='Acme Heat'/5호베
+&DEVC ID='heat52', XYZ=37.5, 21.0, 11.9, PROP_ID='Acme Heat'/5호다
+
+&DEVC ID='heat53', XYZ=40.0, 18.5, 11.9, PROP_ID='Acme Heat'/6호베
+&DEVC ID='heat54', XYZ=41.0, 18.5, 11.9, PROP_ID='Acme Heat'/6호베
+&DEVC ID='heat55', XYZ=44.0, 24.0, 11.9, PROP_ID='Acme Heat'/6호다
+
+&DEVC ID='heat56', XYZ=46.0, 21.5, 11.9, PROP_ID='Acme Heat'/7호베
+&DEVC ID='heat57', XYZ=47.0, 21.5, 11.9, PROP_ID='Acme Heat'/7호베
+&DEVC ID='heat58', XYZ=46.5, 25.5, 11.9, PROP_ID='Acme Heat'/7호다
+
+&DEVC ID='heat59', XYZ=0.5, 0.5, 14.9, PROP_ID='Acme Heat'/1호베 5층
+&DEVC ID='heat60', XYZ=1.5, 8.0, 14.9, PROP_ID='Acme Heat'/1호다
+
+&DEVC ID='heat61', XYZ=7.0, 3.5, 14.9, PROP_ID='Acme Heat'/2호베
+&DEVC ID='heat62', XYZ=8.0, 3.5, 14.9, PROP_ID='Acme Heat'/2호베
+&DEVC ID='heat63', XYZ=11.5, 9.0, 14.9, PROP_ID='Acme Heat'/2호다
+
+&DEVC ID='heat64', XYZ=20.0, 9.5, 14.9, PROP_ID='Acme Heat'/3호베
+&DEVC ID='heat65', XYZ=21.0, 9.5, 14.9, PROP_ID='Acme Heat'/3호베
+&DEVC ID='heat66', XYZ=24.5, 15.0, 14.9, PROP_ID='Acme Heat'/3호다
+
+&DEVC ID='heat67', XYZ=27.0, 12.5, 14.9, PROP_ID='Acme Heat'/4호베
+&DEVC ID='heat68', XYZ=28.0, 12.5, 14.9, PROP_ID='Acme Heat'/4호베
+&DEVC ID='heat69', XYZ=31.0, 18.0, 14.9, PROP_ID='Acme Heat'/4호다
+
+&DEVC ID='heat70', XYZ=33.0, 15.5, 14.9, PROP_ID='Acme Heat'/5호베
+&DEVC ID='heat71', XYZ=34.0, 15.5, 14.9, PROP_ID='Acme Heat'/5호베
+&DEVC ID='heat72', XYZ=37.5, 21.0, 14.9, PROP_ID='Acme Heat'/5호다
+
+&DEVC ID='heat73', XYZ=40.0, 18.5, 14.9, PROP_ID='Acme Heat'/6호베
+&DEVC ID='heat74', XYZ=41.0, 18.5, 14.9, PROP_ID='Acme Heat'/6호베
+&DEVC ID='heat75', XYZ=44.0, 24.0, 14.9, PROP_ID='Acme Heat'/6호다
+
+&DEVC ID='heat76', XYZ=46.0, 21.5, 14.9, PROP_ID='Acme Heat'/7호베
+&DEVC ID='heat77', XYZ=47.0, 21.5, 14.9, PROP_ID='Acme Heat'/7호베
+&DEVC ID='heat78', XYZ=46.5, 25.5, 14.9, PROP_ID='Acme Heat'/7호다
+
+&DEVC ID='heat79', XYZ=19.5, 16.0, 2.8, PROP_ID='Acme Heat'/관리 1층
+&DEVC ID='heat80', XYZ=19.5, 10.0, 2.8, PROP_ID='Acme Heat'/관리
+&DEVC ID='heat81', XYZ=19.5, 13.0, 2.8, PROP_ID='Acme Heat'/관리
+
+&DEVC ID='heat82', XYZ=26.5, 16.0, 2.8, PROP_ID='Acme Heat'/관제
+&DEVC ID='heat83', XYZ=28.5, 16.0, 2.8, PROP_ID='Acme Heat'/관제
+
+&DEVC ID='heat84', XYZ=3.0, 9.0, 2.8, PROP_ID='Acme Heat'/좌주차
+&DEVC ID='heat85', XYZ=9.5, 9.0, 2.8, PROP_ID='Acme Heat'/좌주차
+&DEVC ID='heat86', XYZ=16.0, 9.0, 2.8, PROP_ID='Acme Heat'/좌주차
+&DEVC ID='heat87', XYZ=3.0, 6.0, 2.8, PROP_ID='Acme Heat'/좌주차
+&DEVC ID='heat88', XYZ=9.5, 6.0, 2.8, PROP_ID='Acme Heat'/좌주차
+&DEVC ID='heat89', XYZ=3.0, 3.0, 2.8, PROP_ID='Acme Heat'/좌주차
+
+&DEVC ID='heat90', XYZ=35.0, 18.0, 2.8, PROP_ID='Acme Heat'/우주차
+&DEVC ID='heat91', XYZ=35.0, 21.0, 2.8, PROP_ID='Acme Heat'/우주차
+&DEVC ID='heat92', XYZ=42.0, 21.0, 2.8, PROP_ID='Acme Heat'/우주차
+&DEVC ID='heat93', XYZ=42.0, 24.0, 2.8, PROP_ID='Acme Heat'/우주차
+&DEVC ID='heat94', XYZ=48.0, 24.0, 2.8, PROP_ID='Acme Heat'/우주차
+&DEVC ID='heat95', XYZ=48.0, 27.0, 2.8, PROP_ID='Acme Heat'/우주차
+
+&DEVC ID='smoke01', XYZ=3.0, 2.0 5.9, PROP_ID='Acme Smoke Detector I2'/ 1거실 2층
+&DEVC ID='smoke02', XYZ=1.5, 10.0, 5.9, PROP_ID='Acme Smoke Detector I2'/ 1방
+&DEVC ID='smoke03', XYZ=4.0, 9.5, 5.9, PROP_ID='Acme Smoke Detector I2'/ 1입구
+
+&DEVC ID='smoke04', XYZ=9.0, 5.5, 5.9, PROP_ID='Acme Smoke Detector I2'/ 2거실
+
+&DEVC ID='smoke05', XYZ=10.0, 11.0, 5.9, PROP_ID='Acme Smoke Detector I2'/ 복도
+&DEVC ID='smoke06', XYZ=18.5, 14.0, 5.9, PROP_ID='Acme Smoke Detector I2'/ 복도
+&DEVC ID='smoke07', XYZ=23.0, 19.0, 5.9, PROP_ID='Acme Smoke Detector I2'/ 복도
+&DEVC ID='smoke08', XYZ=36.0, 23.0, 5.9, PROP_ID='Acme Smoke Detector I2'/ 복도
+
+&DEVC ID='smoke09', XYZ=24.0, 12.0, 5.9, PROP_ID='Acme Smoke Detector I2'/ 3거실
+&DEVC ID='smoke10', XYZ=20.5, 12.0, 5.9, PROP_ID='Acme Smoke Detector I2'/ 3방
+
+&DEVC ID='smoke11', XYZ=31.0, 15.0, 5.9, PROP_ID='Acme Smoke Detector I2'/ 4거실
+&DEVC ID='smoke12', XYZ=27.5, 15.0, 5.9, PROP_ID='Acme Smoke Detector I2'/ 4방
+
+&DEVC ID='smoke13', XYZ=37.5, 18.0, 5.9, PROP_ID='Acme Smoke Detector I2'/ 5거실
+&DEVC ID='smoke14', XYZ=33.5, 18.0, 5.9, PROP_ID='Acme Smoke Detector I2'/ 5방
+
+&DEVC ID='smoke15', XYZ=44.0, 21.0, 5.9, PROP_ID='Acme Smoke Detector I2'/ 6거실
+&DEVC ID='smoke16', XYZ=40.5, 21.0, 5.9, PROP_ID='Acme Smoke Detector I2'/ 6방
+
+&DEVC ID='smoke17', XYZ=49.5, 23.5, 5.9, PROP_ID='Acme Smoke Detector I2'/ 7거실
+&DEVC ID='smoke18', XYZ=47.0, 27.0, 5.9, PROP_ID='Acme Smoke Detector I2'/ 7입
+&DEVC ID='smoke19', XYZ=46.5, 23.5, 5.9, PROP_ID='Acme Smoke Detector I2'/ 7방1
+&DEVC ID='smoke20', XYZ=49.5, 30.0, 5.9, PROP_ID='Acme Smoke Detector I2'/ 6방2
+
+&DEVC ID='smoke21', XYZ=3.0, 2.0 8.9, PROP_ID='Acme Smoke Detector I2'/ 1거실 3층
+&DEVC ID='smoke22', XYZ=1.5, 10.0, 8.9, PROP_ID='Acme Smoke Detector I2'/ 1방
+&DEVC ID='smoke23', XYZ=4.0, 9.5, 8.9, PROP_ID='Acme Smoke Detector I2'/ 1입구
+
+&DEVC ID='smoke24', XYZ=11.5, 6.0, 8.9, PROP_ID='Acme Smoke Detector I2'/ 2거실
+&DEVC ID='smoke25', XYZ=7.5, 6.0, 8.9, PROP_ID='Acme Smoke Detector I2'/ 2방
+
+&DEVC ID='smoke26', XYZ=10.0, 11.0, 8.9, PROP_ID='Acme Smoke Detector I2'/ 복도
+&DEVC ID='smoke27', XYZ=18.5, 14.0, 8.9, PROP_ID='Acme Smoke Detector I2'/ 복도
+&DEVC ID='smoke28', XYZ=23.0, 19.0, 8.9, PROP_ID='Acme Smoke Detector I2'/ 복도
+&DEVC ID='smoke29', XYZ=36.0, 23.0, 8.9, PROP_ID='Acme Smoke Detector I2'/ 복도
+
+&DEVC ID='smoke30', XYZ=24.0, 12.0, 8.9, PROP_ID='Acme Smoke Detector I2'/ 3거실
+&DEVC ID='smoke31', XYZ=20.5, 12.0, 8.9, PROP_ID='Acme Smoke Detector I2'/ 3방
+
+&DEVC ID='smoke32', XYZ=31.0, 15.0, 8.9, PROP_ID='Acme Smoke Detector I2'/ 4거실
+&DEVC ID='smoke33', XYZ=27.5, 15.0, 8.9, PROP_ID='Acme Smoke Detector I2'/ 4방
+&DEVC ID='smoke34', XYZ=37.5, 18.0, 8.9, PROP_ID='Acme Smoke Detector I2'/ 5거실
+&DEVC ID='smoke35', XYZ=33.5, 18.0, 8.9, PROP_ID='Acme Smoke Detector I2'/ 5방
+
+&DEVC ID='smoke36', XYZ=44.0, 21.0, 8.9, PROP_ID='Acme Smoke Detector I2'/ 6거실
+&DEVC ID='smoke37', XYZ=40.5, 21.0, 8.9, PROP_ID='Acme Smoke Detector I2'/ 6방
+
+&DEVC ID='smoke38', XYZ=49.5, 23.5, 8.9, PROP_ID='Acme Smoke Detector I2'/ 7거실
+&DEVC ID='smoke39', XYZ=47.0, 27.0, 8.9, PROP_ID='Acme Smoke Detector I2'/ 7입
+&DEVC ID='smoke40', XYZ=46.5, 23.5, 8.9, PROP_ID='Acme Smoke Detector I2'/ 7방1
+&DEVC ID='smoke41', XYZ=49.5, 30.0, 8.9, PROP_ID='Acme Smoke Detector I2'/ 7방2
+
+&DEVC ID='smoke42', XYZ=3.0, 2.0 11.9, PROP_ID='Acme Smoke Detector I2'/ 1거실 4층
+&DEVC ID='smoke43', XYZ=1.5, 10.0, 11.9, PROP_ID='Acme Smoke Detector I2'/ 1방
+&DEVC ID='smoke44', XYZ=4.0, 9.5, 11.9, PROP_ID='Acme Smoke Detector I2'/ 1입구
+
+&DEVC ID='smoke45', XYZ=11.5, 6.0, 11.9, PROP_ID='Acme Smoke Detector I2'/ 2거실
+&DEVC ID='smoke46', XYZ=7.5, 6.0, 11.9, PROP_ID='Acme Smoke Detector I2'/ 2방
+
+&DEVC ID='smoke47', XYZ=10.0, 11.0, 11.9, PROP_ID='Acme Smoke Detector I2'/ 복도
+&DEVC ID='smoke48', XYZ=18.5, 14.0, 11.9, PROP_ID='Acme Smoke Detector I2'/ 복도
+&DEVC ID='smoke49', XYZ=23.0, 19.0, 11.9, PROP_ID='Acme Smoke Detector I2'/ 복도
+&DEVC ID='smoke50', XYZ=36.0, 23.0, 11.9, PROP_ID='Acme Smoke Detector I2'/ 복도
+
+&DEVC ID='smoke51', XYZ=24.0, 12.0, 11.9, PROP_ID='Acme Smoke Detector I2'/ 3거실
+&DEVC ID='smoke52', XYZ=20.5, 12.0, 11.9, PROP_ID='Acme Smoke Detector I2'/ 3방
+
+&DEVC ID='smoke53', XYZ=31.0, 15.0, 11.9, PROP_ID='Acme Smoke Detector I2'/ 4거실
+&DEVC ID='smoke54', XYZ=27.5, 15.0, 11.9, PROP_ID='Acme Smoke Detector I2'/ 4방
+&DEVC ID='smoke55', XYZ=37.5, 18.0, 11.9, PROP_ID='Acme Smoke Detector I2'/ 5거실
+&DEVC ID='smoke56', XYZ=33.5, 18.0, 11.9, PROP_ID='Acme Smoke Detector I2'/ 5방
+
+&DEVC ID='smoke57', XYZ=44.0, 21.0, 11.9, PROP_ID='Acme Smoke Detector I2'/ 6거실
+&DEVC ID='smoke58', XYZ=40.5, 21.0, 11.9, PROP_ID='Acme Smoke Detector I2'/ 6방
+
+&DEVC ID='smoke59', XYZ=49.5, 23.5, 11.9, PROP_ID='Acme Smoke Detector I2'/ 7거실
+&DEVC ID='smoke60', XYZ=47.0, 27.0, 11.9, PROP_ID='Acme Smoke Detector I2'/ 7입
+&DEVC ID='smoke61', XYZ=46.5, 23.5, 11.9, PROP_ID='Acme Smoke Detector I2'/ 7방1
+
+&DEVC ID='smoke62', XYZ=3.0, 2.0 14.9, PROP_ID='Acme Smoke Detector I2'/ 1거실 5층
+&DEVC ID='smoke63', XYZ=1.5, 10.0, 14.9, PROP_ID='Acme Smoke Detector I2'/ 1방
+&DEVC ID='smoke64', XYZ=4.0, 9.5, 14.9, PROP_ID='Acme Smoke Detector I2'/ 1입구
+
+&DEVC ID='smoke65', XYZ=11.5, 6.0, 14.9, PROP_ID='Acme Smoke Detector I2'/ 2거실
+&DEVC ID='smoke66', XYZ=7.5, 6.0, 14.9, PROP_ID='Acme Smoke Detector I2'/ 2방
+
+&DEVC ID='smoke67', XYZ=10.0, 11.0, 14.9, PROP_ID='Acme Smoke Detector I2'/ 복도
+&DEVC ID='smoke68', XYZ=18.5, 14.0, 14.9, PROP_ID='Acme Smoke Detector I2'/ 복도
+&DEVC ID='smoke69', XYZ=23.0, 19.0, 14.9, PROP_ID='Acme Smoke Detector I2'/ 복도
+&DEVC ID='smoke70', XYZ=36.0, 23.0, 14.9, PROP_ID='Acme Smoke Detector I2'/ 복도
+
+&DEVC ID='smoke71', XYZ=24.0, 12.0, 14.9, PROP_ID='Acme Smoke Detector I2'/ 3거실
+&DEVC ID='smoke72', XYZ=20.5, 12.0, 14.9, PROP_ID='Acme Smoke Detector I2'/ 3방
+
+&DEVC ID='smoke73', XYZ=31.0, 15.0, 14.9, PROP_ID='Acme Smoke Detector I2'/ 4거실
+&DEVC ID='smoke74', XYZ=27.5, 15.0, 14.9, PROP_ID='Acme Smoke Detector I2'/ 4방
+&DEVC ID='smoke75', XYZ=37.5, 18.0, 14.9, PROP_ID='Acme Smoke Detector I2'/ 5거실
+&DEVC ID='smoke76', XYZ=33.5, 18.0, 14.9, PROP_ID='Acme Smoke Detector I2'/ 5방
+
+&DEVC ID='smoke77', XYZ=44.0, 21.0, 14.9, PROP_ID='Acme Smoke Detector I2'/ 6거실
+&DEVC ID='smoke78', XYZ=40.5, 21.0, 14.9, PROP_ID='Acme Smoke Detector I2'/ 6방
+
+&DEVC ID='smoke79', XYZ=49.5, 23.5, 14.9, PROP_ID='Acme Smoke Detector I2'/ 7거실
+&DEVC ID='smoke80', XYZ=47.0, 27.0, 14.9, PROP_ID='Acme Smoke Detector I2'/ 7입
+&DEVC ID='smoke81', XYZ=46.5, 23.5, 14.9, PROP_ID='Acme Smoke Detector I2'/ 7방1
+
+&DEVC ID='smoke82', XYZ=25.5, 23.5, 17.9, PROP_ID='Acme Smoke Detector I2'/ 옥상
+
+&DEVC ID='smoke83', XYZ=23.0, 19.0, 2.8, PROP_ID='Acme Smoke Detector I2'/ 복도 1층
+&DEVC ID='smoke84', XYZ=23.0, 14.0, 2.8, PROP_ID='Acme Smoke Detector I2'/ 복도
+&DEVC ID='smoke85', XYZ=22.5, 9.5, 2.8, PROP_ID='Acme Smoke Detector I2'/ 입구
+&DEVC ID='smoke86', XYZ=23.5, 9.5, 2.8, PROP_ID='Acme Smoke Detector I2'/ 입구
+
+
+&OBST XB=3.0, 4.0, 1.0, 2.0, 6.1, 7.0/
+&VENT XB= + ','.join(str(e) for e in fire_pos[i]) + , SURF_ID='FIRE'/
+&SURF ID='FIRE', HRRPUA=3000, RAMP_Q='AAA' /
+&RAMP ID='AAA' T=  0,         F=  0.040 /
+&RAMP ID='AAA' T=  20,        F=  0.060 /
+&RAMP ID='AAA' T=  40,        F=  0.150 /
+&RAMP ID='AAA' T=  60,        F=  0.300 /
+&RAMP ID='AAA' T=  80,        F=  0.500 /
+&RAMP ID='AAA' T=  100,       F=  0.800 /
+&RAMP ID='AAA' T=  120,       F=  0.880 /
+&RAMP ID='AAA' T=  140,       F=  1.0 /
+&RAMP ID='AAA' T=  160,       F=  1.0 /
+&RAMP ID='AAA' T=  180,       F=  1.0 /
+&RAMP ID='AAA' T=  200,       F=  1.0 /
+&RAMP ID='AAA' T=  220,       F=  1.0 /
+&RAMP ID='AAA' T=  240,       F=  1.0 /
+&RAMP ID='AAA' T=  260,       F=  1.0 /
+&RAMP ID='AAA' T=  280,       F=  1.0 /
+&RAMP ID='AAA' T=  300,       F=  1.0 /
+
+&TAIL/
+
+
+
+    f = open("object.fds", 'w')
+    f.write(text)
+    f.close()
+
+    print(str(i) + '번 작업 STARD')
+    os.system("cp Ehouse.fds /tf/fds/auto_work/bin")
+    os.chdir("/tf/fds/auto_work/bin")
+    os.system("fds object.fds")
+    os.system("cp Ehouse_fire_devc.csv /tf/fds/auto_work/화원데이터/" + str(i).zfill(2))
+    os.chdir("/tf/fds/auto_work")
+    print(str(i) + '번 작업 END')
+    print("=================================================================================================\n\n")
