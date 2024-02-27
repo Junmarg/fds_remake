@@ -3,3 +3,6 @@
 3. fds_remake를 사용하여 사용할 데이터 정리
    
 ![image](https://github.com/Junmarg/fds_remake/assets/42922109/dd733b4c-d403-4f96-bd4f-935701916650)
+
+![image](https://github.com/Junmarg/fds_remake/assets/42922109/9448e026-2261-4153-9b20-44fbbe9eb641)
+
